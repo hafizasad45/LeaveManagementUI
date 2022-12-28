@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import ValidateForm from 'src/app/helpers/validateForm';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,11 @@ export class SignupComponent implements OnInit {
   eyeIcon: string = 'fa-eye-slash';
   signUpForm!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
@@ -43,11 +48,18 @@ export class SignupComponent implements OnInit {
       : (this.passFieldType = 'password');
   }
 
-  onSubmit() {
+  onSignUp() {
     if (this.signUpForm.valid) {
-      console.log(this.signUpForm.value);
-
-      //send object to database
+      this.authService.signUp(this.signUpForm.value).subscribe({
+        next: (res) => {
+          alert(res.message);
+          this.signUpForm.reset();
+          this.router.navigateByUrl('/login');
+        },
+        error: (err) => {
+          alert(err?.error.message);
+        },
+      });
     } else {
       // throug error using toaster and with required fileds
       ValidateForm.validateAllFormFields(this.signUpForm);
