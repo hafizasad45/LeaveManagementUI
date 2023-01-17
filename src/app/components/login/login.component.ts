@@ -6,8 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +25,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private toast: NgToastService,
+    private userStore: UserStoreService
   ) {}
 
   ngOnInit() {
@@ -49,12 +53,25 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: (res) => {
-          alert(res.message);
+          this.toast.success({
+            detail: 'SUCCESS',
+            summary: res.message,
+            duration: 5000,
+          });
           this.loginForm.reset();
-          this.router.navigate(['dashboard']);
+          this.authService.storeToken(res.token);
+          const tokenPayLoad = this.authService.decodedToken();
+          this.userStore.setFullNameForStore(tokenPayLoad.name);
+          this.userStore.setRoleForStore(tokenPayLoad.role);
+          this.router.navigate(['LMS']);
         },
         error: (err) => {
-          alert(err?.error.message);
+          //alert(err?.error.message);
+          this.toast.error({
+            detail: 'ERROR',
+            summary: err?.error.message,
+            duration: 5000,
+          });
         },
       });
     } else {
