@@ -59,7 +59,8 @@ export class LoginComponent implements OnInit {
             duration: 5000,
           });
           this.loginForm.reset();
-          this.authService.storeToken(res.token);
+          this.authService.storeToken(res.accessToken);
+          this.authService.storeRefreshToken(res.refreshToken);
           const tokenPayLoad = this.authService.decodedToken();
           this.userStore.setFullNameForStore(tokenPayLoad.name);
           this.userStore.setRoleForStore(tokenPayLoad.role);

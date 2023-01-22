@@ -29,4 +29,8 @@ export class MasterpageComponent implements OnInit {
       this.fullName = val || fullNameFromToken;
     });
   }
+
+  logout() {
+    this.authService.LogOut();
+  }
 }
