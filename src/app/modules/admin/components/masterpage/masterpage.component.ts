@@ -20,9 +20,9 @@ export class MasterpageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.api.getUsers().subscribe((res) => {
-      this.users = res;
-    });
+    // this.api.getUsers().subscribe((res) => {
+    //   this.users = res;
+    // });
 
     this.userStote.getFullNameFromStore().subscribe((val) => {
       const fullNameFromToken = this.authService.getFullNameFromToken();

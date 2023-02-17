@@ -27,11 +27,9 @@ export class HomeComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = [
     'select',
-    'firstName',
-    'lastName',
-    'userName',
+    'loginID',
     'role',
-    'email',
+    'effectiveDate',
     'action',
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -43,6 +41,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.api.getUsers().subscribe((res) => {
+      console.log(res)
       this.userModel = res;
       this.dataSource = new MatTableDataSource(this.userModel);
       this.dataSource.paginator = this.paginator;

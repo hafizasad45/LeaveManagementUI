@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl: string = 'https://localhost:7196/api/User/getAllUser/';
+  private baseUrl: string = 'https://localhost:7161/api/User/getAllUser/';
 
   constructor(private http: HttpClient, private router: Router) {}
 

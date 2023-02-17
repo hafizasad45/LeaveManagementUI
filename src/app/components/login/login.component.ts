@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
+      loginID: ['', Validators.required],
       passWord: ['', Validators.required],
     });
   }
@@ -59,8 +59,9 @@ export class LoginComponent implements OnInit {
             duration: 5000,
           });
           this.loginForm.reset();
-          this.authService.storeToken(res.accessToken);
-          this.authService.storeRefreshToken(res.refreshToken);
+          //console.log(res[0].accessToken);
+          this.authService.storeToken(res[0].accessToken);
+          this.authService.storeRefreshToken(res[0].refreshToken);
           const tokenPayLoad = this.authService.decodedToken();
           this.userStore.setFullNameForStore(tokenPayLoad.name);
           this.userStore.setRoleForStore(tokenPayLoad.role);
