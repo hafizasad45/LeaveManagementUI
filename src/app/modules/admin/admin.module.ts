@@ -8,6 +8,10 @@ import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MasterpageComponent } from './components/masterpage/masterpage.component';
+import { BodyComponent } from './components/body/body.component';
+import { UsersComponent } from './users/users.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +20,10 @@ import { MasterpageComponent } from './components/masterpage/masterpage.componen
     HomeComponent,
     SidenavComponent,
     MasterpageComponent,
+    BodyComponent,
+    UsersComponent,
+    ChangePasswordComponent,
+    SublevelMenuComponent,
   ],
   imports: [CommonModule, AdminRoutingModule, SharedModule],
 })

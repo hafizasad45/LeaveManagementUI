@@ -4,6 +4,11 @@ import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
+interface SideNavToggle {
+  screenWidth: number;
+  collapsed: boolean
+}
+
 @Component({
   selector: 'app-masterpage',
   templateUrl: './masterpage.component.html',
@@ -12,18 +17,21 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 
 export class MasterpageComponent implements OnInit {
 
-    public users: any = [];
+  public users: any = [];
   public fullName: string = '';
+  isSideNavCollapsed = false;
+  screenWidth = 0;
+
   constructor(
     private authService: AuthService,
     private api: ApiService,
     private userStote: UserStoreService
-  ) {}
+  ) { }
 
   ngOnInit() {
-     this.api.getUsers().subscribe((res) => {
-       this.users = res;
-     });
+    this.api.getUsers().subscribe((res) => {
+      this.users = res;
+    });
 
     this.userStote.getFullNameFromStore().subscribe((val) => {
       const fullNameFromToken = this.authService.getFullNameFromToken();
@@ -31,27 +39,14 @@ export class MasterpageComponent implements OnInit {
     });
   }
 
-  @ViewChild('sidenav') sidenav: MatSidenav | undefined;
-  isExpanded = true;
-  showSubmenu: boolean = false;
-  isShowing = false;
-  showSubSubMenu: boolean = false;
-
-  mouseenter() {
-    if (!this.isExpanded) {
-      this.isShowing = true;
-    }
-  }
-
-  mouseleave() {
-    if (!this.isExpanded) {
-      this.isShowing = false;
-    }
+  onToggleSideNav(data: SideNavToggle): void {
+    this.screenWidth = data.screenWidth;
+    this.isSideNavCollapsed = data.collapsed;
   }
 
   logout() {
-        this.authService.LogOut();
-      }
+    this.authService.LogOut();
+  }
 }
 
 
