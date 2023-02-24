@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgToastService } from 'ng-angular-popup';
+import { ToastrService  } from 'ngx-toastr';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    private toast: NgToastService,
+    private toastr: ToastrService ,
     private userStore: UserStoreService
   ) {}
 
@@ -53,11 +53,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: (res) => {
-          this.toast.success({
-            detail: 'SUCCESS',
-            summary: res.message,
-            duration: 5000,
-          });
+          this.toastr.success(res.message, 'SUCCESS',{
+            timeOut: 3000,
+          }); 
           this.loginForm.reset();
           //console.log(res[0].accessToken);
           this.authService.storeToken(res[0].accessToken);
@@ -69,11 +67,9 @@ export class LoginComponent implements OnInit {
         },
         error: (err) => {
           //alert(err?.error.message);
-          this.toast.error({
-            detail: 'ERROR',
-            summary: err?.error.message,
-            duration: 5000,
-          });
+          this.toastr.error(err?.error.message, 'ERROR', {
+            timeOut: 3000,
+          });         
         },
       });
     } else {

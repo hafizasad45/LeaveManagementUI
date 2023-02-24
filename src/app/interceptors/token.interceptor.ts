@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, switchMap, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { NgToastService } from 'ng-angular-popup';
+import { ToastrService  } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { TokenApiModel } from '../models/token-api.model';
 
@@ -16,7 +16,7 @@ import { TokenApiModel } from '../models/token-api.model';
 export class TokenInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthService,
-    private toast: NgToastService,
+    private toastr: ToastrService,
     private router: Router
   ) {}
 
@@ -64,10 +64,10 @@ export class TokenInterceptor implements HttpInterceptor {
       }),
       catchError((err) => {
         return throwError(() => {
-          this.toast.warning({
-            detail: 'Warning',
-            summary: 'Token is expired, Please Login again',
+          this.toastr.warning('Token is expired, Please Login again', 'Warning',{
+            timeOut: 3000,
           });
+          
           this.router.navigate(['login']);
         });
       })

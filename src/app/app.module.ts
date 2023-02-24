@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { NgToastModule } from 'ng-angular-popup';
+import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { CdkMenuModule } from '@angular/cdk/menu';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgToastModule,
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    OverlayModule,
+    CdkMenuModule
   ],
   providers: [
     {
