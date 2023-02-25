@@ -4,7 +4,7 @@
     z-index: 1;
     transition: all .5s ease;
     background: #f4f7fa;
-    padding: 1rem 1.5rem 0 1.5rem;
+    padding: .5rem 1.5rem 0 1.5rem;
 
     position: fixed;
     top: 0;
@@ -108,7 +108,8 @@
 
                     .user-avatar {
                         margin-bottom: -4px;
-                        width: 50px;
+                        width: 40px;
+                        height: 40px;
                         border-radius: 10px;
                         box-shadow: 0 0 15px rgb(35 35 35 /15%);
                         cursor: pointer;
