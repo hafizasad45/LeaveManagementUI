@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -19,8 +18,7 @@ import { CdkMenuModule } from '@angular/cdk/menu';
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent,
-    DashboardComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
