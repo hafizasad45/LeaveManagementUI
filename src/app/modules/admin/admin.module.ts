@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -12,6 +13,7 @@ import { BodyComponent } from './components/body/body.component';
 import { UsersComponent } from './users/users.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
+import { UserComponent } from './users/user/user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.compon
     UsersComponent,
     ChangePasswordComponent,
     SublevelMenuComponent,
+    UserComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule, SharedModule],
+  imports: [CommonModule, AdminRoutingModule, SharedModule, ReactiveFormsModule],
 })
 export class AdminModule {}

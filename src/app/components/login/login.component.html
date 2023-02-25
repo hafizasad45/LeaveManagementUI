@@ -11,7 +11,7 @@
           <div class="panel-body p-3">
             <form [formGroup]="loginForm">
               <div class="form-group pt-3">
-                <div class="input-field"
+                <div class="input-field-login"
                   [class.error]="loginForm.controls['loginID'].dirty && loginForm.hasError('required', 'loginID')">
                   <span class="fa fa-user p-2"></span>
                   <input formControlName="loginID" type="text" placeholder="loginID">
@@ -20,7 +20,7 @@
               <small *ngIf="loginForm.controls['loginID'].dirty && loginForm.hasError('required', 'loginID')"
                 class="text-danger">*Usernmae is required</small>
               <div class="form-group pt-3">
-                <div class="input-field"
+                <div class="input-field-login"
                   [class.error]="loginForm.controls['passWord'].dirty && loginForm.hasError('required', 'passWord')">
                   <span class="fa fa-lock p-2"></span>
                   <input formControlName="passWord" [type]="passFieldType" placeholder="Password">

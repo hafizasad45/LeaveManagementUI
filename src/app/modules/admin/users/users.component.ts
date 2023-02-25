@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Router } from '@angular/router';
 
 
 export interface UsersModel {
@@ -39,7 +40,7 @@ export class UsersComponent implements OnInit {
 
   selection = new SelectionModel<UsersModel>(true, []);
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router : Router) {}
 
   ngOnInit() {
     this.api.getUsers().subscribe((res) => {
@@ -74,6 +75,10 @@ export class UsersComponent implements OnInit {
     } else {
       this.selection.select(...this.dataSource.data);
     }
+  }
+
+  navigateCreateUser() {
+    this.router.navigate(['LMS/user']);
   }
 
 }

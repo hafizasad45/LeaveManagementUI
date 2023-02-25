@@ -1,0 +1,60 @@
+<form [formGroup]="userForm">
+    <h3 class="page-title">Create User</h3>
+    <div class="card">
+        <div class="card-head">
+
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="loginID" class="col-form-label">Login ID</label>
+                        </div>
+                        <div class="col-sm-10 form-group">
+                            <div class="input-field"
+                                [class.error]="userForm.controls['loginID'].dirty && userForm.hasError('required', 'loginID')">
+                                <span class="fa fa-user p-2"></span>                                
+                                <input formControlName="loginID" type="text" placeholder="Login ID">
+                            </div>
+                            <small *ngIf="userForm.controls['loginID'].dirty && userForm.hasError('required', 'loginID')"
+                                class="text-danger">*Login ID is required</small>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="password" class="col-form-label">Password</label>
+                        </div>
+                        <div class="col-sm-10 form-group">
+                            <div class="input-field"
+                                [class.error]="userForm.controls['password'].dirty && userForm.hasError('required', 'password')">
+                                <span class="fa fa-lock p-2"></span>
+                                <input formControlName="password" [type]="passFieldType" placeholder="Password">
+                                <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="effectDate" class="col-form-label">Effect Date</label>
+                        </div>
+                        <div class="col-sm-9 form-group input-field-date">                           
+                                <input type="text" [matDatepicker]="picker" placeholder="dd-mm-yyyy">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>                             
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</form>

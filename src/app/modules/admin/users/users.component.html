@@ -1,10 +1,24 @@
-<h3>Users</h3>
+<h3 class="page-title">Users</h3>
 <div class="card">
-  <div class="card-head">
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput placeholder="Filter" (keyup)="FilterChanged($event)">
-    </mat-form-field>
+  <div class="card-head">   
+
+   
+      <div class="top-0 start-0">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput placeholder="Filter" (keyup)="FilterChanged($event)">
+        </mat-form-field>
+      </div>
+      
+      <div class="position-absolute top-0 end-0 p-3">
+        <div class="row">         
+          <button mat-mini-fab color="primary" class="ms-2" (click)="navigateCreateUser()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+
+    
   </div>
   <div class="card-body">
     <table mat-table matSort [dataSource]="dataSource" class="">

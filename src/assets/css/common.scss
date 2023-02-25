@@ -37,6 +37,21 @@ a:hover{
   margin-top: 100px;
 }
 
+.input-field-login{
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  color: #4343ff;
+}
+
+.input-field-login.error{
+  border: 1px solid red;
+  color: red;
+}
+
 .input-field{
   border-radius: 5px;
   padding: 5px;
@@ -45,6 +60,19 @@ a:hover{
   cursor: pointer;
   border: 1px solid #ddd;
   color: #4343ff;
+  height: 2.2rem;
+}
+
+.input-field-date{
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  color: #4343ff;
+  height: 2.2rem;
+  width: 12rem;
 }
 
 .input-field.error{
@@ -86,4 +114,10 @@ img{
   left: 33%;
   background-color: #fff;
   padding: 0 8px;
+}
+
+
+input.mat-input-element {
+  margin-top: -0.0625em;
+  border: none;
 }

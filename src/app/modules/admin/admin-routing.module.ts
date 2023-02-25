@@ -5,6 +5,7 @@ import { MasterpageComponent } from './components/masterpage/masterpage.componen
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './users/users.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { UserComponent } from './users/user/user.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/LMS/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'users', component: UsersComponent},
+      { path: 'user', component: UserComponent},
       { path: 'changePassword', component: ChangePasswordComponent },
     ],
   },

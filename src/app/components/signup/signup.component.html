@@ -12,7 +12,7 @@
             <form [formGroup]="signUpForm">
 
               <div class="form-group pt-3">
-                <div class="input-field"
+                <div class="input-field-login"
                   [class.error]="signUpForm.controls['loginID'].dirty && signUpForm.hasError('required', 'firstName')">
                   <span class="fa fa-user p-2"></span>
                   <input formControlName="firstName" type="text" placeholder="First Name">
@@ -21,7 +21,7 @@
               <small *ngIf="signUpForm.controls['firstName'].dirty && signUpForm.hasError('required', 'firstName')"
                 class="text-danger">*First Name is required</small>
               <div class="form-group pt-3">
-                <div class="input-field"
+                <div class="input-field-login"
                   [class.error]="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required', 'lastName')">
                   <span class="fa fa-user p-2"></span>
                   <input formControlName="lastName" type="text" placeholder="Last Name">
@@ -30,7 +30,7 @@
               <small *ngIf="signUpForm.controls['lastName'].dirty && signUpForm.hasError('required', 'lastName')"
                 class="text-danger">*Last Name is required</small>
               <div class="form-group pt-3">
-                <div class="input-field"
+                <div class="input-field-login"
                   [class.error]="signUpForm.controls['email'].dirty && signUpForm.hasError('required', 'email')">
                   <span class="fa fa-user p-2"></span>
                   <input formControlName="email" type="text" placeholder="Email">
@@ -39,7 +39,7 @@
               <small *ngIf="signUpForm.controls['email'].dirty && signUpForm.hasError('required', 'email')"
                 class="text-danger">*Email is required</small>
               <div class="form-group pt-3">
-                <div class="input-field"
+                <div class="input-field-login"
                   [class.error]="signUpForm.controls['loginID'].dirty && signUpForm.hasError('required', 'loginID')">
                   <span class="fa fa-user p-2"></span>
                   <input formControlName="loginID" type="text" placeholder="Username">
@@ -49,7 +49,7 @@
                 class="text-danger">*Username is required</small>
 
               <div class="form-group pt-3">
-                <div class="input-field"
+                <div class="input-field-login"
                   [class.error]="signUpForm.controls['password'].dirty && signUpForm.hasError('required', 'password')">
                   <span class="fa fa-lock p-2"></span>
                   <input formControlName="password" [type]="passFieldType" placeholder="Password">
