@@ -1,56 +1,100 @@
 <form [formGroup]="userForm">
     <h3 class="page-title">Create User</h3>
     <div class="card">
-        <div class="card-head">
-
+        <div class="card-head mh-100">
+            <div class="position-absolute top-0 end-0 p-2 me-4">
+                <div class="row">         
+                  <button mat-mini-fab color="primary" class="ms-2">
+                    <mat-icon>save</mat-icon>
+                  </button>
+                </div>
+              </div>
         </div>
         <div class="card-body">
 
             <div class="row">
                 <div class="col">
                     <div class="row">
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <label for="loginID" class="col-form-label">Login ID</label>
                         </div>
-                        <div class="col-sm-10 form-group">
+                        <div class="col-sm-9 form-group">
                             <div class="input-field"
                                 [class.error]="userForm.controls['loginID'].dirty && userForm.hasError('required', 'loginID')">
-                                <span class="fa fa-user p-2"></span>                                
+                                <span class="fa fa-user p-2"></span>
                                 <input formControlName="loginID" type="text" placeholder="Login ID">
                             </div>
-                            <small *ngIf="userForm.controls['loginID'].dirty && userForm.hasError('required', 'loginID')"
+                            <small
+                                *ngIf="userForm.controls['loginID'].dirty && userForm.hasError('required', 'loginID')"
                                 class="text-danger">*Login ID is required</small>
                         </div>
-                        
+
                     </div>
 
                 </div>
                 <div class="col">
                     <div class="row">
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <label for="password" class="col-form-label">Password</label>
                         </div>
-                        <div class="col-sm-10 form-group">
+                        <div class="col-sm-9 form-group">
                             <div class="input-field"
                                 [class.error]="userForm.controls['password'].dirty && userForm.hasError('required', 'password')">
                                 <span class="fa fa-lock p-2"></span>
                                 <input formControlName="password" [type]="passFieldType" placeholder="Password">
                                 <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
                             </div>
+                            <small
+                                *ngIf="userForm.controls['password'].dirty && userForm.hasError('required', 'password')"
+                                class="text-danger">*Password is required</small>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="row">
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label for="effectDate" class="col-form-label">Effect Date</label>
                         </div>
-                        <div class="col-sm-9 form-group input-field-date">                           
-                                <input type="text" [matDatepicker]="picker" placeholder="dd-mm-yyyy">
-                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>                             
-                        </div>
+                        <div class="col-sm-8 form-group input-field-date" [class.error]="userForm.controls['effectDate'].dirty && userForm.hasError('required', 'effectDate')">
+                            <input type="text" [matDatepicker]="picker" placeholder="MM/DD/YYYY" formControlName="effectDate"
+                                matTooltip="MM/DD/YYYY">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>                            
+                        </div>                        
+
                     </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="role" class="col-form-label input-field-required">Role</label>
+                        </div>
+                        <div class="col-sm-9 form-group">
+                            <div class="input-field"
+                                [class.error]="userForm.controls['role'].touched && userForm.controls['role'].invalid && userForm.hasError('required', 'role')">
+                                <select class="form-select form-select-sm" formControlName="role" id="role">
+                                    <option value="">Select an item</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">User</option>
+                                  </select>
+                            </div>
+                            <small
+                                *ngIf="userForm.controls['role'].touched && userForm.controls['role']?.invalid && userForm.hasError('required', 'role')"
+                                class="text-danger">*Role is required</small>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col">
+                  
+                </div>
+                <div class="col">
+                  
                 </div>
 
             </div>

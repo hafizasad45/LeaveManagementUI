@@ -63,16 +63,12 @@ a:hover{
   height: 2.2rem;
 }
 
-.input-field-date{
-  border-radius: 5px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  color: #4343ff;
-  height: 2.2rem;
-  width: 12rem;
+.input-field:focus-within{
+  border-color: #86b7fe;
+  //border-color: yellow;
+   outline: 0;
+   box-shadow: 0 0 0 0.15rem rgb(13 110 253 / 25%);
+   //box-shadow: none;
 }
 
 .input-field.error{
@@ -87,6 +83,33 @@ input[type='password']{
   box-shadow: none;
   width: 100%;
 }
+
+.input-field-date{
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  color: #4343ff;
+  height: 2.2rem;
+  width: 12rem;
+}
+
+.input-field-date:focus-within{
+  border-color: #86b7fe;
+  //border-color: yellow;
+   outline: 0;
+   box-shadow: 0 0 0 0.15rem rgb(13 110 253 / 25%);
+   //box-shadow: none;
+}
+
+.input-field-date.error{
+  border: 1px solid red;
+  color: red;
+}
+
+
 
 .fa-eye-slash.btn{
   border: none;
@@ -120,4 +143,37 @@ img{
 input.mat-input-element {
   margin-top: -0.0625em;
   border: none;
+}
+.form-select:focus {
+  border-color: #86b7fe;
+ //border-color: yellow;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem rgb(13 110 253 / 25%);
+  //box-shadow: none;
+}
+
+.form-select {
+  border: none !important;
+  box-shadow: none !important;
+}
+.form-select:focus-within {
+  border: none !important;
+  box-shadow: none !important;
+}
+.form-select:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.form-select-sm {
+  border: none !important;
+  box-shadow: none !important;
+}
+.form-select-sm:focus-within {
+  border: none !important;
+  box-shadow: none !important;
+}
+.form-select-sm:focus {
+  border: none !important;
+  box-shadow: none !important;
 }

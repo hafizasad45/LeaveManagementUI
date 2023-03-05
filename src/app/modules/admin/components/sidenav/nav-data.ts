@@ -8,7 +8,7 @@ export const navbarData: INavbarData[] = [
     },
     {
         routeLink: 'products',
-        icon: 'fa fa-product-hunt',
+        icon: 'fa fa-user',
         label: 'Users',
         items: [
             {
@@ -20,51 +20,5 @@ export const navbarData: INavbarData[] = [
                 label: 'Change Password',
             }
         ]
-    },
-    {
-        routeLink: 'statistics',
-        icon: 'fa fa-bar-chart',
-        label: 'Statistics'
-    },
-    {
-        routeLink: 'coupens',
-        icon: 'fa fa-tags',
-        label: 'Coupens',
-        items: [
-            {
-                routeLink: 'coupens/list',
-                label: 'List Coupens'
-            },
-            {
-                routeLink: 'coupens/create',
-                label: 'Create Coupens'
-            }
-        ]
-    },
-    {
-        routeLink: 'pages',
-        icon: 'fa fa-file',
-        label: 'Pages'
-    },
-    {
-        routeLink: 'media',
-        icon: 'fa fa-camera',
-        label: 'Media'
-    },
-    {
-        routeLink: 'settings',
-        icon: 'fa fa-cog',
-        label: 'Settings',
-        expanded: true,
-        items: [
-            {
-                routeLink: 'settings/profile',
-                label: 'Profile'
-            },
-            {
-                routeLink: 'settings/customize',
-                label: 'Customize'
-            }
-        ]
-    },
+    }
 ];
