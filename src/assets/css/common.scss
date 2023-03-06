@@ -93,3 +93,7 @@ input.mat-input-element {
   border: none;
 }
 
+.form-label.required::after {
+  content:"*";
+  color:red;
+}

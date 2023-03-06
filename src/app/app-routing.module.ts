@@ -14,6 +14,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },
+  {
+    path: 'LMS',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./modules/system-setting/system-setting.module').then((m) => m.SystemSettingModule),
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
