@@ -1,104 +1,71 @@
-<form [formGroup]="userForm">
-    <h3 class="page-title">Create User</h3>
-    <div class="card">
-        <div class="card-head mh-100">
-            <div class="position-absolute top-0 end-0 p-2 me-4">
-                <div class="row">         
-                  <button mat-mini-fab color="primary" class="ms-2">
-                    <mat-icon>save</mat-icon>
-                  </button>
-                </div>
-              </div>
-        </div>
-        <div class="card-body">
 
-            <div class="row">
-                <div class="col">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <label for="loginID" class="col-form-label">Login ID</label>
-                        </div>
-                        <div class="col-sm-9 form-group">
-                            <div class="input-field"
-                                [class.error]="userForm.controls['loginID'].dirty && userForm.hasError('required', 'loginID')">
-                                <span class="fa fa-user p-2"></span>
-                                <input formControlName="loginID" type="text" placeholder="Login ID">
-                            </div>
-                            <small
-                                *ngIf="userForm.controls['loginID'].dirty && userForm.hasError('required', 'loginID')"
-                                class="text-danger">*Login ID is required</small>
-                        </div>
-
+    <form [formGroup]="userForm">
+        <h3 class="page-title">Create User</h3>
+        <div class="card">
+            <div class="card-head mh-100">
+                <div class="position-absolute top-0 end-0 p-2 me-4">
+                    <div class="row">         
+                      <button mat-mini-fab color="primary" class="ms-2">
+                        <mat-icon>save</mat-icon>
+                      </button>
                     </div>
-
-                </div>
-                <div class="col">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <label for="password" class="col-form-label">Password</label>
-                        </div>
-                        <div class="col-sm-9 form-group">
-                            <div class="input-field"
-                                [class.error]="userForm.controls['password'].dirty && userForm.hasError('required', 'password')">
-                                <span class="fa fa-lock p-2"></span>
-                                <input formControlName="password" [type]="passFieldType" placeholder="Password">
-                                <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
-                            </div>
-                            <small
-                                *ngIf="userForm.controls['password'].dirty && userForm.hasError('required', 'password')"
-                                class="text-danger">*Password is required</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label for="effectDate" class="col-form-label">Effect Date</label>
-                        </div>
-                        <div class="col-sm-8 form-group input-field-date" [class.error]="userForm.controls['effectDate'].dirty && userForm.hasError('required', 'effectDate')">
-                            <input type="text" [matDatepicker]="picker" placeholder="MM/DD/YYYY" formControlName="effectDate"
-                                matTooltip="MM/DD/YYYY">
-                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>                            
-                        </div>                        
-
-                    </div>
-                </div>
-
+                  </div>
             </div>
-
-            <div class="row mt-4">
-                <div class="col">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <label for="role" class="col-form-label input-field-required">Role</label>
-                        </div>
-                        <div class="col-sm-9 form-group">
-                            <div class="input-field"
-                                [class.error]="userForm.controls['role'].touched && userForm.controls['role'].invalid && userForm.hasError('required', 'role')">
-                                <select class="form-select form-select-sm" formControlName="role" id="role">
-                                    <option value="">Select an item</option>
-                                    <option value="1">Admin</option>
-                                    <option value="2">User</option>
-                                  </select>
-                            </div>
-                            <small
-                                *ngIf="userForm.controls['role'].touched && userForm.controls['role']?.invalid && userForm.hasError('required', 'role')"
-                                class="text-danger">*Role is required</small>
-                        </div>
-
+            <div class="card-body">    
+                <div class="row g-3">
+                    <div class="input-group-sm col-md-4">
+                      <label for="loginID" class="form-label">Login ID</label>
+                      <input 
+                      [class.is-invalid]="userForm.controls['loginID'].dirty && userForm.hasError('required', 'loginID')"
+                      [class.is-valid]="userForm.controls['loginID'].dirty"
+                      formControlName="loginID" type="text" class="form-control" id="loginID" required>
+                      <small
+                        *ngIf="userForm.controls['loginID'].dirty && userForm.hasError('required', 'loginID')"
+                        class="text-danger">*Login ID is required
+                      </small>
                     </div>
+                    <div class="input-group-sm col-md-4">
+                        <label for="password" class="form-label">Password</label>
+                        <input 
+                        [class.is-invalid]="userForm.controls['password'].dirty && userForm.hasError('required', 'password')"
+                        [class.is-valid]="userForm.controls['password'].dirty"
+                        formControlName="password" type="text" class="form-control" id="password" required>
+                        <small
+                          *ngIf="userForm.controls['password'].dirty && userForm.hasError('required', 'password')"
+                          class="text-danger">*Password is required
+                        </small>
+                      </div>
+                      <div class="input-group-sm col-md-4">
+                        <label for="effectDate" class="form-label">Effect Date</label>
+                        <input 
+                        [class.is-invalid]="userForm.controls['effectDate'].dirty && userForm.hasError('required', 'effectDate')"
+                        [class.is-valid]="userForm.controls['effectDate'].dirty"
+                        formControlName="effectDate" type="date" class="form-control" id="effectDate" required placeholder="MM/DD/YYYY">                      
+                        
+                        <small
+                          *ngIf="userForm.controls['effectDate'].dirty && userForm.hasError('required', 'effectDate')"
+                          class="text-danger">*Date is required
+                        </small>
+                      </div>
 
+                      <div class="input-group-sm col-md-4">
+                        <label for="role" class="form-label">Role</label>
+                        <select 
+                        [class.is-invalid]="userForm.controls['role'].dirty && userForm.hasError('required', 'role')"
+                        [class.is-valid]="userForm.controls['role'].dirty"
+                        formControlName="role" class="form-select" id="role" required>
+                        <option selected value="">Choose...</option>
+                        <option>...</option>
+                      </select>
+                        <small
+                          *ngIf="userForm.controls['role'].dirty && userForm.hasError('required', 'role')"
+                          class="text-danger">*Role is required
+                        </small>
+                      </div>
+                   
                 </div>
-                <div class="col">
-                  
-                </div>
-                <div class="col">
-                  
-                </div>
-
+    
             </div>
-
         </div>
-    </div>
-</form>
+    </form>
+

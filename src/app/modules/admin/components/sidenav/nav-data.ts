@@ -20,5 +20,20 @@ export const navbarData: INavbarData[] = [
                 label: 'Change Password',
             }
         ]
+    },
+    {
+        routeLink: 'products',
+        icon: 'fa fa-user',
+        label: 'System Setting',
+        items: [
+            {
+                routeLink: 'users',
+                label: 'Show Users'                
+            },
+            {
+                routeLink: 'changePassword',
+                label: 'Change Password',
+            }
+        ]
     }
 ];
