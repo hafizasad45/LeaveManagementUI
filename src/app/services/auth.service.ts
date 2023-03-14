@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenApiModel } from '../models/token-api.model';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl: string = 'https://localhost:7161/api/User/';
+  private baseUrl: string = environment.baseUrl + 'User/';
   private userPayLoad: any;
 
   constructor(private http: HttpClient, private router: Router) {
