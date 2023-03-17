@@ -17,4 +17,8 @@ export class InstituteService {
   createInstitute(instituteObj: any) {
     return this.http.post<any>(`${this.baseUrl}CreateInstitute`, instituteObj);
   }
+
+  getInstituteList() {
+    return this.http.get<any>(`${this.baseUrl}GetInstituteList`);
+  }
 }

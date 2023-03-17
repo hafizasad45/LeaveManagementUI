@@ -5,44 +5,47 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { InstituteService } from 'src/app/services/institute.service';
 
 
-export interface UsersModel {
-  firstName: string;
-  lastName: string;
-  userName: string;
-  role: string;
-  email: string;
+export interface InstituteModel {
+  instituteID: number;
+  instituteCode: string;
+  instituteName: string;
+  description: string;
+  isActive: string;
 }
 
 @Component({
   selector: 'app-institute-list',
-  templateUrl: './institute-list.component.html'
+  templateUrl: './institute-list.component.html',
+  styleUrls: ['./institute-list.component.scss']
 })
 export class InstituteListComponent implements OnInit  {
 
-  userModel!: UsersModel[];
-  public users: any = [];
+  instituteModel!: InstituteModel[];
+  public institute: any = [];
   dataSource: any;
   displayedColumns: string[] = [
     'select',
-    'loginID',
-    'role',
-    'effectiveDate',
-    'action',
+    'instituteCode',
+    'instituteName',
+    'description',
+    'isActive',
+    'action'
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  selection = new SelectionModel<UsersModel>(true, []);
+  selection = new SelectionModel<InstituteModel>(true, []);
 
-  constructor(private api: ApiService, private router : Router) {}
+  constructor(private service: InstituteService, private router : Router) {}
 
   ngOnInit() {
-    this.api.getUsers().subscribe((res) => {
+    this.service.getInstituteList().subscribe((res) => {
       console.log(res)
-      this.userModel = res;
-      this.dataSource = new MatTableDataSource(this.userModel);
+      this.instituteModel = res;
+      this.dataSource = new MatTableDataSource(this.instituteModel);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -53,11 +56,11 @@ export class InstituteListComponent implements OnInit  {
     this.dataSource.filter = filterValue;
   }
 
-  FunctionEdit(email: any) {
-    console.log(email);
+  FunctionEdit(instituteID: any) {
+    console.log(instituteID);
   }
 
-  onDataToggled(data: UsersModel) {
+  onDataToggled(data: InstituteModel) {
     this.selection.toggle(data);
   }
 

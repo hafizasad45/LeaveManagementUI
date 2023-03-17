@@ -20,7 +20,7 @@ export class InstituteComponent implements OnInit {
       instituteCode: ['', Validators.required],
       instituteName: ['', Validators.required],
       description: [''],
-      active : [true]
+      IsActive : [true]
     });
   }
 
