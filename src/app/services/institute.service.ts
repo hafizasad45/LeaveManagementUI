@@ -8,13 +8,13 @@ import { environment } from '../../environment/environment';
 })
 export class InstituteService {
 
-  private baseUrl: string = environment.baseUrl + 'User/';
+  private baseUrl: string = environment.baseUrl + 'Institute/';
 
 
   constructor(private http: HttpClient, private router: Router) {    
   }
 
   createInstitute(instituteObj: any) {
-    return this.http.post<any>(`${this.baseUrl}register`, instituteObj);
+    return this.http.post<any>(`${this.baseUrl}CreateInstitute`, instituteObj);
   }
 }

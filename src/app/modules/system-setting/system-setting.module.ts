@@ -5,11 +5,13 @@ import { SystemSettingRoutingModule } from './system-setting-routing.module';
 import { InstituteComponent } from './institute/institute.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InstituteListComponent } from './institute-list/institute-list.component';
 
 
 @NgModule({
   declarations: [
-    InstituteComponent
+    InstituteComponent,
+    InstituteListComponent
   ],
   imports: [
     CommonModule,

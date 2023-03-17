@@ -27,7 +27,7 @@ export const navbarData: INavbarData[] = [
         label: 'System Setting',
         items: [
             {
-                routeLink: 'institute',
+                routeLink: 'instituteList',
                 label: 'Institute'                
             },
             {

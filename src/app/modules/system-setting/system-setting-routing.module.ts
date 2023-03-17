@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../admin/components/home/home.component';
 import { MasterpageComponent } from '../admin/components/masterpage/masterpage.component';
+import { InstituteListComponent } from './institute-list/institute-list.component';
 import { InstituteComponent } from './institute/institute.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/LMS/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
+      { path: 'instituteList', component: InstituteListComponent},
       { path: 'institute', component: InstituteComponent},
     ],
   },
