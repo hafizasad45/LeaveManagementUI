@@ -1,0 +1,74 @@
+
+<form [formGroup]="branchForm">
+    <h3 class="page-title">Create Branch</h3>
+    <div class="card">
+        <div class="card-head mh-100">
+            <div class="position-absolute top-0 end-0 p-2 me-4">
+                <div class="row">         
+                  <button mat-mini-fab color="accent" class="ms-2" (click)="goBack()" type="submit" matTooltip="Back">
+                    <mat-icon>arrow_back</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="primary" class="ms-2" (click)="onSave()" type="submit" matTooltip="Save">
+                    <mat-icon>save</mat-icon>
+                  </button>
+                </div>
+              </div>
+        </div>
+        <div class="card-body">    
+            <div class="row g-3">
+                <div class="input-group-sm col-md-4">
+                  <label for="branchCode" class="form-label required">Branch Code</label>
+                  <input 
+                  [class.is-invalid]="branchForm.controls['branchCode'].dirty && branchForm.hasError('required', 'branchCode')"
+                  [class.is-valid]="branchForm.controls['branchCode'].dirty"
+                  formControlName="branchCode" type="text" class="form-control" id="branchCode" required placeholder="Code">
+                  <small
+                    *ngIf="branchForm.controls['branchCode'].dirty && branchForm.hasError('required', 'branchCode')"
+                    class="text-danger">*Code is required
+                  </small>
+                </div>
+                <div class="input-group-sm col-md-4">
+                    <label for="branchName" class="form-label required">Branch Name</label>
+                    <input 
+                    [class.is-invalid]="branchForm.controls['branchName'].dirty && branchForm.hasError('required', 'branchName')"
+                    [class.is-valid]="branchForm.controls['branchName'].dirty"
+                    formControlName="branchName" type="text" class="form-control" id="branchName" required placeholder="Name">
+                    <small
+                      *ngIf="branchForm.controls['branchName'].dirty && branchForm.hasError('required', 'branchName')"
+                      class="text-danger">*Name is required
+                    </small>
+                  </div>
+                  <div class="input-group-sm col-md-4">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea 
+                    formControlName="description" type="text" class="form-control" id="description"></textarea>                   
+                  </div>      
+                  
+                  <div class="input-group-sm col-md-4">
+                    <label for="instituteID" class="form-label">Institute</label>
+                    <select 
+                    [class.is-invalid]="branchForm.controls['instituteID'].dirty && branchForm.hasError('required', 'instituteID')"
+                    [class.is-valid]="branchForm.controls['instituteID'].dirty"
+                    formControlName="instituteID" class="form-select" id="instituteID" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let ins of modelInstitute" [value]="[ins.instituteID]">
+                        {{ins.instituteName}}
+                    </option>
+                  </select>
+                    <small
+                      *ngIf="branchForm.controls['instituteID'].dirty && branchForm.hasError('required', 'instituteID')"
+                      class="text-danger">*Institute is required
+                    </small>
+                  </div>
+               
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="IsActive" formControlName="IsActive">
+                <label class="form-check-label" for="IsActive">Active</label>
+              </div>
+        </div>
+    </div>
+</form>
+

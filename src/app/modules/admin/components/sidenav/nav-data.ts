@@ -31,8 +31,8 @@ export const navbarData: INavbarData[] = [
                 label: 'Institute'                
             },
             {
-                routeLink: 'changePassword',
-                label: 'Change Password',
+                routeLink: 'branch',
+                label: 'Branch',
             }
         ]
     }
