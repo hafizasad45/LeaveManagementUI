@@ -5,53 +5,54 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ApiService } from 'src/app/services/api.service';
-import { InstituteService } from 'src/app/services/institute.service';
+import { BranchService } from 'src/app/services/branch.service';
 
 
-export interface InstituteModel {
-  instituteID: number;
-  instituteCode: string;
-  instituteName: string;
+export interface BranchModel {  
+  branchID: string;
+  branchCode: string;
+  branchName: string;
   description: string;
   isActive: string;
+  instituteID: number;
+  instituteName: string;
 }
 
 @Component({
-  selector: 'app-institute-list',
-  templateUrl: './institute-list.component.html',
-  styleUrls: ['./institute-list.component.scss']
+  selector: 'app-branch-list',
+  templateUrl: './branch-list.component.html',
+  styleUrls: ['./branch-list.component.scss']
 })
-export class InstituteListComponent implements OnInit  {
-
-  instituteModel!: InstituteModel[];
+export class BranchListComponent implements OnInit {
+  branchModel!: BranchModel[];
   public institute: any = [];
   dataSource: any;
   displayedColumns: string[] = [
     'select',
-    'instituteCode',
-    'instituteName',
+    'branchCode',
+    'branchName',
     'description',
     'isActive',
+    'instituteName',
     'action'
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  selection = new SelectionModel<InstituteModel>(true, []);
+  selection = new SelectionModel<BranchModel>(true, []);
 
-  constructor(private service: InstituteService, private router : Router, private toastr: ToastrService) {}
+  constructor(private service: BranchService, private router : Router, private toastr: ToastrService) {}
 
   ngOnInit() {
-    this.getInstituteList();
+    this.getBranchList();
   }
 
-  getInstituteList() {
+  getBranchList() {
     this.dataSource = [];
-    this.service.getInstituteList().subscribe((res) => {
+    this.service.getBranchList().subscribe((res) => {
       console.log(res)
-      this.instituteModel = res;
-      this.dataSource = new MatTableDataSource(this.instituteModel);
+      this.branchModel = res;
+      this.dataSource = new MatTableDataSource(this.branchModel);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -62,21 +63,18 @@ export class InstituteListComponent implements OnInit  {
     this.dataSource.filter = filterValue;
   }
 
-  FunctionEdit(instituteID: any) {
-    //console.log(instituteID);
-   // this.router.navigate(['LMS/institute']);
-    this.router.navigate(["LMS/institute"], {
-      queryParams: { data: instituteID },
+  FunctionEdit(branchID: any) {
+    this.router.navigate(["LMS/branch"], {
+      queryParams: { data: branchID },
     });
   }
-  FunctionDelete(instituteID: any) {
-    console.log(instituteID);    
-    this.service.deleteInstitute(instituteID).subscribe({
+  FunctionDelete(branchID: any) {  
+    this.service.deleteBranch(branchID).subscribe({
       next: (res) => {
         this.toastr.success(res[0].message, 'SUCCESS',{
           timeOut: 3000,
         });
-        this.getInstituteList();
+        this.getBranchList();
       },
       error: (err) => {
         //alert(err?.error.message);
@@ -89,7 +87,7 @@ export class InstituteListComponent implements OnInit  {
    
   }
 
-  onDataToggled(data: InstituteModel) {
+  onDataToggled(data: BranchModel) {
     this.selection.toggle(data);
   }
 
@@ -105,8 +103,7 @@ export class InstituteListComponent implements OnInit  {
     }
   }
 
-  navigateCreateInstitute() {
+  navigateCreateBranch() {
     this.router.navigate(['LMS/institute']);
   }
-
 }

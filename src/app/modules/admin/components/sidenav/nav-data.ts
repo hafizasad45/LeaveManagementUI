@@ -31,7 +31,7 @@ export const navbarData: INavbarData[] = [
                 label: 'Institute'                
             },
             {
-                routeLink: 'branch',
+                routeLink: 'branchList',
                 label: 'Branch',
             }
         ]

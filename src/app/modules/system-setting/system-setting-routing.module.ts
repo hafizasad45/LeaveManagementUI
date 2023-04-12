@@ -5,6 +5,7 @@ import { MasterpageComponent } from '../admin/components/masterpage/masterpage.c
 import { BranchComponent } from './branch/branch.component';
 import { InstituteListComponent } from './institute-list/institute-list.component';
 import { InstituteComponent } from './institute/institute.component';
+import { BranchListComponent } from './branch-list/branch-list.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'instituteList', component: InstituteListComponent},
       { path: 'institute', component: InstituteComponent},
+      { path: 'branchList', component: BranchListComponent},
       { path: 'branch', component: BranchComponent},
     ],
   },
