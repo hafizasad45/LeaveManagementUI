@@ -1,6 +1,6 @@
 
 <form [formGroup]="instituteForm">
-    <h3 class="page-title">Create Institute</h3>
+    <h3 class="page-title">{{p_Operation}} Institute</h3>
     <div class="card">
         <div class="card-head mh-100">
             <div class="position-absolute top-0 end-0 p-2 me-4">
@@ -15,6 +15,7 @@
               </div>
         </div>
         <div class="card-body">    
+          <input hidden="true" formControlName="instituteID" />
             <div class="row g-3">
                 <div class="input-group-sm col-md-4">
                   <label for="instituteCode" class="form-label required">Institute Code</label>

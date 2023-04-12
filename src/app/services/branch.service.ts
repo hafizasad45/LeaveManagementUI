@@ -15,7 +15,6 @@ export class BranchService {
   }
 
   createBranch(branchObj: any) {
-    console.log(branchObj)
     return this.http.post<any>(`${this.baseUrl}CreateBranch`, branchObj);
   }
 

@@ -36,7 +36,6 @@ export class BranchComponent implements OnInit {
   getInstituteList() {
     this.instituteService.getInstituteList().subscribe((data : ModelInstitute[]) => {
       this.modelInstitute = data;
-      console.log(this.modelInstitute);
     });
   }
 

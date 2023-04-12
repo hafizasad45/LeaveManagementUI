@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/services/api.service';
 import { InstituteService } from 'src/app/services/institute.service';
 
@@ -39,9 +40,14 @@ export class InstituteListComponent implements OnInit  {
 
   selection = new SelectionModel<InstituteModel>(true, []);
 
-  constructor(private service: InstituteService, private router : Router) {}
+  constructor(private service: InstituteService, private router : Router, private toastr: ToastrService) {}
 
   ngOnInit() {
+    this.getInstituteList();
+  }
+
+  getInstituteList() {
+    this.dataSource = [];
     this.service.getInstituteList().subscribe((res) => {
       console.log(res)
       this.instituteModel = res;
@@ -57,7 +63,30 @@ export class InstituteListComponent implements OnInit  {
   }
 
   FunctionEdit(instituteID: any) {
-    console.log(instituteID);
+    //console.log(instituteID);
+   // this.router.navigate(['LMS/institute']);
+    this.router.navigate(["LMS/institute"], {
+      queryParams: { data: instituteID },
+    });
+  }
+  FunctionDelete(instituteID: any) {
+    console.log(instituteID);    
+    this.service.deleteInstitute(instituteID).subscribe({
+      next: (res) => {
+        this.toastr.success(res[0].message, 'SUCCESS',{
+          timeOut: 3000,
+        });
+        this.getInstituteList();
+      },
+      error: (err) => {
+        //alert(err?.error.message);
+        this.toastr.error(err?.error[0].message, 'ERROR', {
+          timeOut: 3000,
+        }); 
+      },
+    });
+
+   
   }
 
   onDataToggled(data: InstituteModel) {

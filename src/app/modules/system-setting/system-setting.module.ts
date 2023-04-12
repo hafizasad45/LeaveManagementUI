@@ -20,6 +20,6 @@ import { BranchComponent } from './branch/branch.component';
     SystemSettingRoutingModule,
     SharedModule, 
     ReactiveFormsModule
-  ]
+  ],
 })
 export class SystemSettingModule { }
