@@ -104,6 +104,6 @@ export class BranchListComponent implements OnInit {
   }
 
   navigateCreateBranch() {
-    this.router.navigate(['LMS/institute']);
+    this.router.navigate(['LMS/branch']);
   }
 }

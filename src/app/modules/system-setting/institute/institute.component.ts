@@ -95,7 +95,6 @@ export class InstituteComponent implements OnInit {
   updateInstitute() {
     if (this.instituteForm.valid) {
       this.instituteForm.controls["instituteCode"].enable();
-      console.log(this.instituteForm.value)
       this.service.updateInstitute(this.instituteForm.value).subscribe({
         next: (res) => {
           this.toastr.success(res[0].message, 'SUCCESS',{
