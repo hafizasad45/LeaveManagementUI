@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InstituteListComponent } from './institute-list/institute-list.component';
 import { BranchComponent } from './branch/branch.component';
 import { BranchListComponent } from './branch-list/branch-list.component';
+import { DepartmentListComponent } from './department-list/department-list.component';
+import { DepartmentComponent } from './department/department.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { BranchListComponent } from './branch-list/branch-list.component';
     InstituteComponent,
     InstituteListComponent,
     BranchComponent,
-    BranchListComponent
+    BranchListComponent,
+    DepartmentListComponent,
+    DepartmentComponent
   ],
   imports: [
     CommonModule,

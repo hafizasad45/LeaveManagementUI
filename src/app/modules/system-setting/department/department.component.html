@@ -1,0 +1,58 @@
+
+<form [formGroup]="departmentForm">
+    <h3 class="page-title">Create Department</h3>
+    <div class="card">
+        <div class="card-head mh-100">
+            <div class="position-absolute top-0 end-0 p-2 me-4">
+                <div class="row">         
+                  <button mat-mini-fab color="accent" class="ms-2" (click)="goBack()" type="submit" matTooltip="Back">
+                    <mat-icon>arrow_back</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="primary" class="ms-2" (click)="onSave()" type="submit" matTooltip="Save">
+                    <mat-icon>save</mat-icon>
+                  </button>
+                </div>
+              </div>
+        </div>
+        <div class="card-body"> 
+          <input hidden="true" formControlName="departmentID" />   
+            <div class="row g-3">
+                <div class="input-group-sm col-md-4">
+                  <label for="departmentCode" class="form-label required">Department Code</label>
+                  <input 
+                  [class.is-invalid]="departmentForm.controls['departmentCode'].dirty && departmentForm.hasError('required', 'departmentCode')"
+                  [class.is-valid]="departmentForm.controls['departmentCode'].dirty"
+                  formControlName="departmentCode" type="text" class="form-control" id="departmentCode" required placeholder="Code">
+                  <small
+                    *ngIf="departmentForm.controls['departmentCode'].dirty && departmentForm.hasError('required', 'departmentCode')"
+                    class="text-danger">*Code is required
+                  </small>
+                </div>
+                <div class="input-group-sm col-md-4">
+                    <label for="departmentName" class="form-label required">Department Name</label>
+                    <input 
+                    [class.is-invalid]="departmentForm.controls['departmentName'].dirty && departmentForm.hasError('required', 'departmentName')"
+                    [class.is-valid]="departmentForm.controls['departmentName'].dirty"
+                    formControlName="departmentName" type="text" class="form-control" id="departmentName" required placeholder="Name">
+                    <small
+                      *ngIf="departmentForm.controls['departmentName'].dirty && departmentForm.hasError('required', 'departmentName')"
+                      class="text-danger">*Name is required
+                    </small>
+                  </div>
+                  <div class="input-group-sm col-md-4">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea 
+                    formControlName="description" type="text" class="form-control" id="description"></textarea>                   
+                  </div>
+               
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="IsActive" formControlName="IsActive">
+                <label class="form-check-label" for="IsActive">Active</label>
+              </div>
+        </div>
+    </div>
+</form>
+

@@ -5,53 +5,50 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { BranchService } from 'src/app/services/branch.service';
+import { DepartmentService } from 'src/app/services/department.service';
 
-
-export interface BranchModel {  
-  branchID: string;
-  branchCode: string;
-  branchName: string;
+export interface DepartmentModel {  
+  departmentID: string;
+  departmentCode: string;
+  departmentName: string;
   description: string;
   isActive: string;
-  instituteID: number;
-  instituteName: string;
 }
 
 @Component({
-  selector: 'app-branch-list',
-  templateUrl: './branch-list.component.html',
-  styleUrls: ['./branch-list.component.scss']
+  selector: 'app-department-list',
+  templateUrl: './department-list.component.html',
+  styleUrls: ['./department-list.component.scss']
 })
-export class BranchListComponent implements OnInit {
-  branchModel!: BranchModel[];
+export class DepartmentListComponent implements OnInit  {
+  departmentModel!: DepartmentModel[];
   public institute: any = [];
   dataSource: any;
   displayedColumns: string[] = [
     'select',
-    'branchCode',
-    'branchName',
+    'departmentCode',
+    'departmentName',
     'description',
     'isActive',
-    'instituteName',
     'action'
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  selection = new SelectionModel<BranchModel>(true, []);
+  selection = new SelectionModel<DepartmentModel>(true, []);
 
-  constructor(private service: BranchService, private router : Router, private toastr: ToastrService) {}
+  constructor(private service: DepartmentService, private router : Router, private toastr: ToastrService) {}
 
   ngOnInit() {
-    this.getBranchList();
+    this.getdepartmentList();
   }
 
-  getBranchList() {
+  getdepartmentList() {
     this.dataSource = [];
-    this.service.getBranchList().subscribe((res) => {
-      this.branchModel = res;
-      this.dataSource = new MatTableDataSource(this.branchModel);
+    this.service.getDepartmentList().subscribe((res) => {
+      console.log(res)
+      this.departmentModel = res;
+      this.dataSource = new MatTableDataSource(this.departmentModel);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -62,18 +59,18 @@ export class BranchListComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  FunctionEdit(branchID: any) {
-    this.router.navigate(["LMS/branch"], {
-      queryParams: { data: branchID },
+  FunctionEdit(departmentID: any) {
+    this.router.navigate(["LMS/department"], {
+      queryParams: { data: departmentID },
     });
   }
-  FunctionDelete(branchID: any) {  
-    this.service.deleteBranch(branchID).subscribe({
+  FunctionDelete(departmentID: any) {  
+    this.service.deleteDepartment(departmentID).subscribe({
       next: (res) => {
         this.toastr.success(res[0].message, 'SUCCESS',{
           timeOut: 3000,
         });
-        this.getBranchList();
+        this.getdepartmentList();
       },
       error: (err) => {
         //alert(err?.error.message);
@@ -86,7 +83,7 @@ export class BranchListComponent implements OnInit {
    
   }
 
-  onDataToggled(data: BranchModel) {
+  onDataToggled(data: DepartmentModel) {
     this.selection.toggle(data);
   }
 
@@ -102,7 +99,7 @@ export class BranchListComponent implements OnInit {
     }
   }
 
-  navigateCreateBranch() {
-    this.router.navigate(['LMS/branch']);
+  navigateCreateDepartment() {
+    this.router.navigate(['LMS/department']);
   }
 }

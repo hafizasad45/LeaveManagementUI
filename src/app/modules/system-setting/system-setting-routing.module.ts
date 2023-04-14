@@ -6,6 +6,8 @@ import { BranchComponent } from './branch/branch.component';
 import { InstituteListComponent } from './institute-list/institute-list.component';
 import { InstituteComponent } from './institute/institute.component';
 import { BranchListComponent } from './branch-list/branch-list.component';
+import { DepartmentListComponent } from './department-list/department-list.component';
+import { DepartmentComponent } from './department/department.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,8 @@ const routes: Routes = [
       { path: 'institute', component: InstituteComponent},
       { path: 'branchList', component: BranchListComponent},
       { path: 'branch', component: BranchComponent},
+      { path: 'departmentList', component: DepartmentListComponent},
+      { path: 'department', component: DepartmentComponent},
     ],
   },
 ];
