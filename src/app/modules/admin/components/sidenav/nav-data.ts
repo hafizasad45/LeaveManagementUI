@@ -37,6 +37,10 @@ export const navbarData: INavbarData[] = [
             {
                 routeLink: 'departmentList',
                 label: 'Department',
+            },
+            {
+                routeLink: 'designationList',
+                label: 'Designation',
             }
         ]
     }

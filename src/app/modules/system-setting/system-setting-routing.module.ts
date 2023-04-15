@@ -8,6 +8,8 @@ import { InstituteComponent } from './institute/institute.component';
 import { BranchListComponent } from './branch-list/branch-list.component';
 import { DepartmentListComponent } from './department-list/department-list.component';
 import { DepartmentComponent } from './department/department.component';
+import { DesignationListComponent } from './designation-list/designation-list.component';
+import { DesignationComponent } from './designation/designation.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,8 @@ const routes: Routes = [
       { path: 'branch', component: BranchComponent},
       { path: 'departmentList', component: DepartmentListComponent},
       { path: 'department', component: DepartmentComponent},
+      { path: 'designationList', component: DesignationListComponent},
+      { path: 'designation', component: DesignationComponent},
     ],
   },
 ];

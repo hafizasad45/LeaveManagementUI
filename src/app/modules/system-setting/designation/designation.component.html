@@ -1,6 +1,6 @@
 
-<form [formGroup]="departmentForm">
-    <h3 class="page-title">{{p_Operation}} Department</h3>
+<form [formGroup]="designationForm">
+    <h3 class="page-title">{{p_Operation}} Designation</h3>
     <div class="card">
         <div class="card-head mh-100">
             <div class="position-absolute top-0 end-0 p-2 me-4">
@@ -15,27 +15,27 @@
               </div>
         </div>
         <div class="card-body"> 
-          <input hidden="true" formControlName="departmentID" />   
+          <input hidden="true" formControlName="designationID" />   
             <div class="row g-3">
                 <div class="input-group-sm col-md-4">
-                  <label for="departmentCode" class="form-label required">Department Code</label>
+                  <label for="designationCode" class="form-label required">Designation Code</label>
                   <input 
-                  [class.is-invalid]="departmentForm.controls['departmentCode'].dirty && departmentForm.hasError('required', 'departmentCode')"
-                  [class.is-valid]="departmentForm.controls['departmentCode'].dirty"
-                  formControlName="departmentCode" type="text" class="form-control" id="departmentCode" required placeholder="Code">
+                  [class.is-invalid]="designationForm.controls['designationCode'].dirty && designationForm.hasError('required', 'designationCode')"
+                  [class.is-valid]="designationForm.controls['designationCode'].dirty"
+                  formControlName="designationCode" type="text" class="form-control" id="designationCode" required placeholder="Code">
                   <small
-                    *ngIf="departmentForm.controls['departmentCode'].dirty && departmentForm.hasError('required', 'departmentCode')"
+                    *ngIf="designationForm.controls['designationCode'].dirty && designationForm.hasError('required', 'designationCode')"
                     class="text-danger">*Code is required
                   </small>
                 </div>
                 <div class="input-group-sm col-md-4">
-                    <label for="departmentName" class="form-label required">Department Name</label>
+                    <label for="designationName" class="form-label required">Designation Name</label>
                     <input 
-                    [class.is-invalid]="departmentForm.controls['departmentName'].dirty && departmentForm.hasError('required', 'departmentName')"
-                    [class.is-valid]="departmentForm.controls['departmentName'].dirty"
-                    formControlName="departmentName" type="text" class="form-control" id="departmentName" required placeholder="Name">
+                    [class.is-invalid]="designationForm.controls['designationName'].dirty && designationForm.hasError('required', 'designationName')"
+                    [class.is-valid]="designationForm.controls['designationName'].dirty"
+                    formControlName="designationName" type="text" class="form-control" id="designationName" required placeholder="Name">
                     <small
-                      *ngIf="departmentForm.controls['departmentName'].dirty && departmentForm.hasError('required', 'departmentName')"
+                      *ngIf="designationForm.controls['designationName'].dirty && designationForm.hasError('required', 'designationName')"
                       class="text-danger">*Name is required
                     </small>
                   </div>

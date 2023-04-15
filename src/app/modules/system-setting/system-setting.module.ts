@@ -10,6 +10,8 @@ import { BranchComponent } from './branch/branch.component';
 import { BranchListComponent } from './branch-list/branch-list.component';
 import { DepartmentListComponent } from './department-list/department-list.component';
 import { DepartmentComponent } from './department/department.component';
+import { DesignationListComponent } from './designation-list/designation-list.component';
+import { DesignationComponent } from './designation/designation.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { DepartmentComponent } from './department/department.component';
     BranchComponent,
     BranchListComponent,
     DepartmentListComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    DesignationListComponent,
+    DesignationComponent
   ],
   imports: [
     CommonModule,
