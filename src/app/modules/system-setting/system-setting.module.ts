@@ -12,6 +12,8 @@ import { DepartmentListComponent } from './department-list/department-list.compo
 import { DepartmentComponent } from './department/department.component';
 import { DesignationListComponent } from './designation-list/designation-list.component';
 import { DesignationComponent } from './designation/designation.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { DesignationComponent } from './designation/designation.component';
     DepartmentListComponent,
     DepartmentComponent,
     DesignationListComponent,
-    DesignationComponent
+    DesignationComponent,
+    EmployeeListComponent,
+    EmployeeComponent
   ],
   imports: [
     CommonModule,

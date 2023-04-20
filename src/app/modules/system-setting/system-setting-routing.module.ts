@@ -10,6 +10,8 @@ import { DepartmentListComponent } from './department-list/department-list.compo
 import { DepartmentComponent } from './department/department.component';
 import { DesignationListComponent } from './designation-list/designation-list.component';
 import { DesignationComponent } from './designation/designation.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,8 @@ const routes: Routes = [
       { path: 'department', component: DepartmentComponent},
       { path: 'designationList', component: DesignationListComponent},
       { path: 'designation', component: DesignationComponent},
+      { path: 'employeeList', component: EmployeeListComponent},
+      { path: 'employee', component: EmployeeComponent},
     ],
   },
 ];
