@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environment/environment';
+import { ModelEmployee } from '../models/employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class EmployeeService {
   constructor(private http: HttpClient, private router: Router) {    
   }
 
-  createEmployee(employeeObj: any) {
+  createEmployee(employeeObj: ModelEmployee) {
+    console.log(employeeObj)
     return this.http.post<any>(`${this.baseUrl}CreateEmployee`, employeeObj);
   }
 

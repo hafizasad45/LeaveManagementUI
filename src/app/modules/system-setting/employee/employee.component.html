@@ -1,1 +1,178 @@
-<p>employee works!</p>
+
+<form [formGroup]="employeeForm">
+    <h3 class="page-title">{{p_Operation}} Employee</h3>
+    <div class="card">
+        <div class="card-head mh-100">
+            <div class="position-absolute top-0 end-0 p-2 me-4">
+                <div class="row">         
+                  <button mat-mini-fab color="accent" class="ms-2" (click)="goBack()" type="submit" matTooltip="Back">
+                    <mat-icon>arrow_back</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="primary" class="ms-2" (click)="onSave()" type="submit" matTooltip="Save">
+                    <mat-icon>save</mat-icon>
+                  </button>
+                </div>
+              </div>
+        </div>
+        <div class="card-body"> 
+          <input hidden="true" formControlName="employeeID" />   
+            <div class="row g-3">
+                <div class="input-group-sm col-md-4">
+                  <label for="employeeCode" class="form-label required">Employee Code</label>
+                  <input 
+                  [class.is-invalid]="employeeForm.controls['employeeCode'].dirty && employeeForm.hasError('required', 'employeeCode')"
+                  [class.is-valid]="employeeForm.controls['employeeCode'].dirty"
+                  formControlName="employeeCode" type="text" class="form-control" id="employeeCode" required placeholder="Code">
+                  <small
+                    *ngIf="employeeForm.controls['employeeCode'].dirty && employeeForm.hasError('required', 'employeeCode')"
+                    class="text-danger">*Code is required
+                  </small>
+                </div>
+                <div class="input-group-sm col-md-4">
+                    <label for="employeeName" class="form-label required">Employee Name</label>
+                    <input 
+                    [class.is-invalid]="employeeForm.controls['employeeName'].dirty && employeeForm.hasError('required', 'employeeName')"
+                    [class.is-valid]="employeeForm.controls['employeeName'].dirty"
+                    formControlName="employeeName" type="text" class="form-control" id="employeeName" required placeholder="Name">
+                    <small
+                      *ngIf="employeeForm.controls['employeeName'].dirty && employeeForm.hasError('required', 'employeeName')"
+                      class="text-danger">*Name is required
+                    </small>
+                  </div>
+                  <div class="input-group-sm col-md-4">
+                    <label for="instituteID" class="form-label">Institute</label>
+                    <select 
+                    [class.is-invalid]="employeeForm.controls['instituteID'].dirty && employeeForm.hasError('required', 'instituteID')"
+                    [class.is-valid]="employeeForm.controls['instituteID'].dirty"
+                    formControlName="instituteID" class="form-select" id="instituteID" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let ins of modelInstitute" [value]="[ins.instituteID]">
+                        {{ins.instituteName}}
+                    </option>
+                  </select>
+                    <small
+                      *ngIf="employeeForm.controls['instituteID'].dirty && employeeForm.hasError('required', 'instituteID')"
+                      class="text-danger">*Institute is required
+                    </small>                  
+                  </div>
+
+                  <div class="input-group-sm col-md-4">
+                    <label for="branchID" class="form-label">Branch</label>
+                    <select 
+                    [class.is-invalid]="employeeForm.controls['branchID'].dirty && employeeForm.hasError('required', 'branchID')"
+                    [class.is-valid]="employeeForm.controls['branchID'].dirty"
+                    formControlName="branchID" class="form-select" id="branchID" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let br of modelBranch" [value]="[br.branchID]">
+                        {{br.branchName}}
+                    </option>
+                  </select>
+                    <small
+                      *ngIf="employeeForm.controls['branchID'].dirty && employeeForm.hasError('required', 'branchID')"
+                      class="text-danger">*Branch is required
+                    </small>                  
+                  </div>
+
+                  <div class="input-group-sm col-md-4">
+                    <label for="departmentID" class="form-label">Department</label>
+                    <select 
+                    [class.is-invalid]="employeeForm.controls['departmentID'].dirty && employeeForm.hasError('required', 'departmentID')"
+                    [class.is-valid]="employeeForm.controls['departmentID'].dirty"
+                    formControlName="departmentID" class="form-select" id="departmentID" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let dep of modelDepartment" [value]="[dep.departmentID]">
+                        {{dep.departmentName}}
+                    </option>
+                  </select>
+                    <small
+                      *ngIf="employeeForm.controls['departmentID'].dirty && employeeForm.hasError('required', 'departmentID')"
+                      class="text-danger">*Department is required
+                    </small>                  
+                  </div>
+
+                  <div class="input-group-sm col-md-4">
+                    <label for="designationID" class="form-label">Designation</label>
+                    <select 
+                    [class.is-invalid]="employeeForm.controls['designationID'].dirty && employeeForm.hasError('required', 'designationID')"
+                    [class.is-valid]="employeeForm.controls['designationID'].dirty"
+                    formControlName="designationID" class="form-select" id="designationID" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let des of modelDesignation" [value]="[des.designationID]">
+                        {{des.designationName}}
+                    </option>
+                  </select>
+                    <small
+                      *ngIf="employeeForm.controls['designationID'].dirty && employeeForm.hasError('required', 'designationID')"
+                      class="text-danger">*Designation is required
+                    </small>                  
+                  </div>
+
+                  <div class="input-group-sm col-md-4">
+                    <label for="gradeID" class="form-label">Grade</label>
+                    <select 
+                    [class.is-invalid]="employeeForm.controls['gradeID'].dirty && employeeForm.hasError('required', 'gradeID')"
+                    [class.is-valid]="employeeForm.controls['gradeID'].dirty"
+                    formControlName="gradeID" class="form-select" id="gradeID" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let gr of modelGrade" [value]="[gr.gradeID]">
+                        {{gr.gradeName}}
+                    </option>
+                  </select>
+                    <small
+                      *ngIf="employeeForm.controls['gradeID'].dirty && employeeForm.hasError('required', 'gradeID')"
+                      class="text-danger">*Grade is required
+                    </small>                  
+                  </div>
+
+                  <div class="input-group-sm col-md-4">
+                    <label for="employeeTypeID" class="form-label">Employee Type</label>
+                    <select 
+                    [class.is-invalid]="employeeForm.controls['employeeTypeID'].dirty && employeeForm.hasError('required', 'employeeTypeID')"
+                    [class.is-valid]="employeeForm.controls['employeeTypeID'].dirty"
+                    formControlName="employeeTypeID" class="form-select" id="employeeTypeID" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let typ of modelEmployeeType" [value]="[typ.employeeTypeID]">
+                        {{typ.employeeTypeName}}
+                    </option>
+                  </select>
+                    <small
+                      *ngIf="employeeForm.controls['employeeTypeID'].dirty && employeeForm.hasError('required', 'employeeTypeID')"
+                      class="text-danger">*Employee Type is required
+                    </small>                  
+                  </div>
+
+                  <div class="input-group-sm col-md-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                    formControlName="email" type="text" class="form-control" id="email" required placeholder="Email">                    
+                  </div>
+
+                  <div class="input-group-sm col-md-4">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea 
+                    formControlName="address" type="text" class="form-control" id="address"></textarea>                   
+                  </div>
+
+                  <div class="input-group-sm col-md-4">
+                    <label for="mobile" class="form-label">Mobile</label>
+                    <input 
+                    formControlName="mobile" type="text" class="form-control" id="mobile">                 
+                  </div>
+
+                  <div class="input-group-sm col-md-4">
+                    <label for="supervisorID" class="form-label">Supervisor Code</label>
+                    <input 
+                    formControlName="supervisorID" type="text" class="form-control" id="supervisorID">                 
+                  </div>
+               
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="leaveApprovalAuthority" formControlName="leaveApprovalAuthority">
+                <label class="form-check-label" for="leaveApprovalAuthority">Leave Approval Authority</label>
+              </div>
+        </div>
+    </div>
+</form>
+

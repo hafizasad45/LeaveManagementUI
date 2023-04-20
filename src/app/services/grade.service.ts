@@ -23,7 +23,7 @@ export class GradeService {
   }
 
   getGradeList() {
-    return this.http.get<any>(`${this.baseUrl}GetGradeList`);
+    return this.http.get<any>(`${this.baseUrl}GetGradetList`);
   }
 
   getGradeByID(gradeID : number) {

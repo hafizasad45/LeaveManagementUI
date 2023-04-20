@@ -23,7 +23,7 @@ export const navbarData: INavbarData[] = [
     },
     {
         routeLink: 'products',
-        icon: 'fa fa-user',
+        icon: 'fa fa-gear',
         label: 'System Setting',
         items: [
             {

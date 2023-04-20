@@ -13,6 +13,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CdkMenuModule } from '@angular/cdk/menu';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     OverlayModule,
-    CdkMenuModule
+    CdkMenuModule,
+    FontAwesomeModule
   ],
   providers: [
     {

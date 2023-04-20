@@ -3,6 +3,7 @@ import { navbarData } from './nav-data';
 import { fadeInOut, INavbarData } from './helper';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
+import { faAngleRight, faAngleDown} from '@fortawesome/free-solid-svg-icons';
 
 interface SideNavToggle {
   screenWidth : number;
@@ -29,7 +30,8 @@ interface SideNavToggle {
 })
 export class SidenavComponent implements OnInit{
  
-
+  faAngleRight = faAngleRight;
+  faAngleDown = faAngleDown;
   @Output() onToggleSideNav : EventEmitter<SideNavToggle> = new EventEmitter();
 
   collapsed = false;

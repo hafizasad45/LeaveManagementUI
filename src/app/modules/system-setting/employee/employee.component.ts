@@ -3,8 +3,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import ValidateForm from 'src/app/helpers/validateForm';
+import { ModelBranch } from 'src/app/models/branch.model';
+import { ModelDepartment } from 'src/app/models/department.model';
+import { ModelDesignation } from 'src/app/models/designation.model';
 import { ModelEmployee } from 'src/app/models/employee.model';
+import { modelEmployeeType } from 'src/app/models/employeeType.model';
+import { ModelGrade } from 'src/app/models/grade.model';
+import { ModelInstitute } from 'src/app/models/institute.model';
+import { BranchService } from 'src/app/services/branch.service';
+import { DepartmentService } from 'src/app/services/department.service';
+import { DesignationService } from 'src/app/services/designation.service';
+import { EmployeeTypeService } from 'src/app/services/employee-type.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { GradeService } from 'src/app/services/grade.service';
+import { InstituteService } from 'src/app/services/institute.service';
 
 @Component({
   selector: 'app-employee',
@@ -17,12 +29,23 @@ export class EmployeeComponent implements OnInit {
   p_Operation : string = "Create";
 
   modelInstitute : any[] = [];
+  modelBranch : any[] = [];
+  modelDepartment : any[] = [];
+  modelDesignation : any[] = [];
+  modelGrade : any[] = [];
+  modelEmployeeType : any[] = [];
 
-  constructor(private fb: FormBuilder, private route : ActivatedRoute, private service : EmployeeService,  private toastr: ToastrService, private router : Router ) {}
+  constructor(  private fb: FormBuilder, private route : ActivatedRoute, private service : EmployeeService,  
+                private toastr: ToastrService, private router : Router, private insService : InstituteService,
+                private brService : BranchService, private depService : DepartmentService,
+                private desService : DesignationService, private grdService : GradeService,
+                private empTypeService : EmployeeTypeService
+             ) {}
 
 
   ngOnInit(): void {
     this.resetForm();  
+    this.loadDropDown();
     this.route.queryParams.subscribe((params) => {
       this.p_EmployeeID = params['data'];
       if (this.p_EmployeeID != null) {
@@ -68,15 +91,42 @@ export class EmployeeComponent implements OnInit {
       employeeName: ['', Validators.required],
       instituteID: ['', Validators.required],
       branchID: ['', Validators.required],
-      departmrntID: ['', Validators.required],
+      departmentID: ['', Validators.required],
       designationID: ['', Validators.required],
       gradeID: ['', Validators.required],
       employeeTypeID: ['', Validators.required],
-      email: ['', Validators.required],
-      address: [''],
-      mobile: [''],
+      email: [null],
+      address: [null],
+      mobile: [null],
       supervisorID: [null],
-      leaveApprovalAuthority: ['', Validators.required],
+      leaveApprovalAuthority: [false],
+    });
+  }
+
+  loadDropDown() {
+    this.insService.getInstituteList().subscribe((data : ModelInstitute[]) => {
+      this.modelInstitute = data;
+    });
+
+    this.brService.getBranchList().subscribe((data : ModelBranch[]) => {
+      this.modelBranch = data;
+    });
+
+    this.depService.getDepartmentList().subscribe((data : ModelDepartment[]) => {
+      this.modelDepartment = data;
+    });
+
+    this.desService.getDesignationList().subscribe((data : ModelDesignation[]) => {
+      this.modelDesignation = data;
+    });
+
+    this.grdService.getGradeList().subscribe((data : ModelGrade[]) => {
+      this.modelGrade = data;
+      console.log(data)
+    });
+
+    this.empTypeService.getEmployeeTypeList().subscribe((data : modelEmployeeType[]) => {
+      this.modelEmployeeType = data;
     });
   }
 

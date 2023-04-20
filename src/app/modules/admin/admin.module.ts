@@ -14,6 +14,7 @@ import { UsersComponent } from './users/users.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
 import { UserComponent } from './users/user/user.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,6 @@ import { UserComponent } from './users/user/user.component';
     SublevelMenuComponent,
     UserComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule, SharedModule, ReactiveFormsModule],
+  imports: [CommonModule, AdminRoutingModule, SharedModule, ReactiveFormsModule, FontAwesomeModule],
 })
 export class AdminModule {}

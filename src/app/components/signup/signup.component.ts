@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { ToastrService  } from 'ngx-toastr';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { AuthService } from 'src/app/services/auth.service';
+import { faUser, faMessage, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-signup',
@@ -18,8 +19,13 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupComponent implements OnInit {
   passFieldType: string = 'password';
   isText: boolean = false;
-  eyeIcon: string = 'fa-eye-slash';
+  faEye = faEyeSlash;
+  //faEyeSlash = faEyeSlash;
   signUpForm!: FormGroup;
+
+  faUser = faUser;
+  faMessage = faMessage;
+  faLock = faLock;
 
   constructor(
     private router: Router,
@@ -44,7 +50,7 @@ export class SignupComponent implements OnInit {
 
   hideShowPass() {
     this.isText = !this.isText;
-    this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
+    this.isText ? this.faEye = faEye : this.faEye = faEyeSlash;
     this.isText
       ? (this.passFieldType = 'text')
       : (this.passFieldType = 'password');
