@@ -7,7 +7,7 @@ import { ModelBranch } from 'src/app/models/branch.model';
 import { ModelDepartment } from 'src/app/models/department.model';
 import { ModelDesignation } from 'src/app/models/designation.model';
 import { ModelEmployee } from 'src/app/models/employee.model';
-import { modelEmployeeType } from 'src/app/models/employeeType.model';
+import { ModelEmployeeType } from 'src/app/models/employeeType.model';
 import { ModelGrade } from 'src/app/models/grade.model';
 import { ModelInstitute } from 'src/app/models/institute.model';
 import { BranchService } from 'src/app/services/branch.service';
@@ -123,7 +123,7 @@ export class EmployeeComponent implements OnInit {
       this.modelGrade = data;
     });
 
-    this.empTypeService.getEmployeeTypeList().subscribe((data : modelEmployeeType[]) => {
+    this.empTypeService.getEmployeeTypeList().subscribe((data : ModelEmployeeType[]) => {
       this.modelEmployeeType = data;
     });
   }

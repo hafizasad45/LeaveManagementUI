@@ -16,6 +16,8 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { GradeListComponent } from './grade-list/grade-list.component';
 import { GradeComponent } from './grade/grade.component';
+import { EmployeeTypeComponent } from './employee-type/employee-type.component';
+import { EmployeeTypeListComponent } from './employee-type-list/employee-type-list.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { GradeComponent } from './grade/grade.component';
     EmployeeListComponent,
     EmployeeComponent,
     GradeListComponent,
-    GradeComponent
+    GradeComponent,
+    EmployeeTypeComponent,
+    EmployeeTypeListComponent
   ],
   imports: [
     CommonModule,

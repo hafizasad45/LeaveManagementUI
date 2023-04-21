@@ -14,6 +14,8 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { GradeListComponent } from './grade-list/grade-list.component';
 import { GradeComponent } from './grade/grade.component';
+import { EmployeeTypeListComponent } from './employee-type-list/employee-type-list.component';
+import { EmployeeTypeComponent } from './employee-type/employee-type.component';
 
 const routes: Routes = [
   {
@@ -30,8 +32,10 @@ const routes: Routes = [
       { path: 'department', component: DepartmentComponent},
       { path: 'designationList', component: DesignationListComponent},
       { path: 'designation', component: DesignationComponent},
-      { path: 'gradeList', component: GradeListComponent},
+      { path: 'gradeList', component: GradeListComponent},      
       { path: 'grade', component: GradeComponent},
+      { path: 'employeeTypeList', component: EmployeeTypeListComponent},
+      { path: 'employeeType', component: EmployeeTypeComponent},
       { path: 'employeeList', component: EmployeeListComponent},
       { path: 'employee', component: EmployeeComponent},
     ],

@@ -1,0 +1,58 @@
+
+<form [formGroup]="employeeTypeForm">
+    <h3 class="page-title">{{p_Operation}} Employee Type</h3>
+    <div class="card">
+        <div class="card-head mh-100">
+            <div class="position-absolute top-0 end-0 p-2 me-4">
+                <div class="row">         
+                  <button mat-mini-fab color="accent" class="ms-2" (click)="goBack()" type="submit" matTooltip="Back">
+                    <mat-icon>arrow_back</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="primary" class="ms-2" (click)="onSave()" type="submit" matTooltip="Save">
+                    <mat-icon>save</mat-icon>
+                  </button>
+                </div>
+              </div>
+        </div>
+        <div class="card-body"> 
+          <input hidden="true" formControlName="employeeTypeID" />   
+            <div class="row g-3">
+                <div class="input-group-sm col-md-4">
+                  <label for="employeeTypeCode" class="form-label required">Employee Type Code</label>
+                  <input 
+                  [class.is-invalid]="employeeTypeForm.controls['employeeTypeCode'].dirty && employeeTypeForm.hasError('required', 'employeeTypeCode')"
+                  [class.is-valid]="employeeTypeForm.controls['employeeTypeCode'].dirty"
+                  formControlName="employeeTypeCode" type="text" class="form-control" id="employeeTypeCode" required placeholder="Code">
+                  <small
+                    *ngIf="employeeTypeForm.controls['employeeTypeCode'].dirty && employeeTypeForm.hasError('required', 'employeeTypeCode')"
+                    class="text-danger">*Code is required
+                  </small>
+                </div>
+                <div class="input-group-sm col-md-4">
+                    <label for="employeeTypeName" class="form-label required">Employee Type Name</label>
+                    <input 
+                    [class.is-invalid]="employeeTypeForm.controls['employeeTypeName'].dirty && employeeTypeForm.hasError('required', 'employeeTypeName')"
+                    [class.is-valid]="employeeTypeForm.controls['employeeTypeName'].dirty"
+                    formControlName="employeeTypeName" type="text" class="form-control" id="employeeTypeName" required placeholder="Name">
+                    <small
+                      *ngIf="employeeTypeForm.controls['employeeTypeName'].dirty && employeeTypeForm.hasError('required', 'employeeTypeName')"
+                      class="text-danger">*Name is required
+                    </small>
+                  </div>
+                  <div class="input-group-sm col-md-4">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea 
+                    formControlName="description" type="text" class="form-control" id="description"></textarea>                   
+                  </div>
+               
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="IsActive" formControlName="IsActive">
+                <label class="form-check-label" for="IsActive">Active</label>
+              </div>
+        </div>
+    </div>
+</form>
+
