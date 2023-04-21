@@ -1,0 +1,58 @@
+
+<form [formGroup]="gradeForm">
+    <h3 class="page-title">{{p_Operation}} Grade</h3>
+    <div class="card">
+        <div class="card-head mh-100">
+            <div class="position-absolute top-0 end-0 p-2 me-4">
+                <div class="row">         
+                  <button mat-mini-fab color="accent" class="ms-2" (click)="goBack()" type="submit" matTooltip="Back">
+                    <mat-icon>arrow_back</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="primary" class="ms-2" (click)="onSave()" type="submit" matTooltip="Save">
+                    <mat-icon>save</mat-icon>
+                  </button>
+                </div>
+              </div>
+        </div>
+        <div class="card-body"> 
+          <input hidden="true" formControlName="gradeID" />   
+            <div class="row g-3">
+                <div class="input-group-sm col-md-4">
+                  <label for="gradeCode" class="form-label required">Grade Code</label>
+                  <input 
+                  [class.is-invalid]="gradeForm.controls['gradeCode'].dirty && gradeForm.hasError('required', 'gradeCode')"
+                  [class.is-valid]="gradeForm.controls['gradeCode'].dirty"
+                  formControlName="gradeCode" type="text" class="form-control" id="gradeCode" required placeholder="Code">
+                  <small
+                    *ngIf="gradeForm.controls['gradeCode'].dirty && gradeForm.hasError('required', 'gradeCode')"
+                    class="text-danger">*Code is required
+                  </small>
+                </div>
+                <div class="input-group-sm col-md-4">
+                    <label for="gradeName" class="form-label required">Grade Name</label>
+                    <input 
+                    [class.is-invalid]="gradeForm.controls['gradeName'].dirty && gradeForm.hasError('required', 'gradeName')"
+                    [class.is-valid]="gradeForm.controls['gradeName'].dirty"
+                    formControlName="gradeName" type="text" class="form-control" id="gradeName" required placeholder="Name">
+                    <small
+                      *ngIf="gradeForm.controls['gradeName'].dirty && gradeForm.hasError('required', 'gradeName')"
+                      class="text-danger">*Name is required
+                    </small>
+                  </div>
+                  <div class="input-group-sm col-md-4">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea 
+                    formControlName="description" type="text" class="form-control" id="description"></textarea>                   
+                  </div>
+               
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="IsActive" formControlName="IsActive">
+                <label class="form-check-label" for="IsActive">Active</label>
+              </div>
+        </div>
+    </div>
+</form>
+
