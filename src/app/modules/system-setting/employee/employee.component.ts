@@ -49,7 +49,6 @@ export class EmployeeComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.p_EmployeeID = params['data'];
       if (this.p_EmployeeID != null) {
-        console.log(this.p_EmployeeID)
         this.getEmployeeByID(this.p_EmployeeID);
       }
     });    
@@ -72,7 +71,7 @@ export class EmployeeComponent implements OnInit {
       employeeName: modelEmployeeSet.employeeName,
       instituteID: modelEmployeeSet.instituteID,
       branchID: modelEmployeeSet.branchID,
-      departmrntID: modelEmployeeSet.departmrntID,
+      departmentID: modelEmployeeSet.departmentID,
       designationID: modelEmployeeSet.designationID,
       gradeID: modelEmployeeSet.gradeID,
       employeeTypeID: modelEmployeeSet.employeeTypeID,
@@ -122,7 +121,6 @@ export class EmployeeComponent implements OnInit {
 
     this.grdService.getGradeList().subscribe((data : ModelGrade[]) => {
       this.modelGrade = data;
-      console.log(data)
     });
 
     this.empTypeService.getEmployeeTypeList().subscribe((data : modelEmployeeType[]) => {
@@ -164,13 +162,13 @@ export class EmployeeComponent implements OnInit {
   
   updateEmployee() {
     if (this.employeeForm.valid) {
-      this.employeeForm.controls["EmployeeCode"].enable();
+      this.employeeForm.controls["employeeCode"].enable();
       this.service.updateEmployee(this.employeeForm.value).subscribe({
         next: (res) => {
           this.toastr.success(res[0].message, 'SUCCESS',{
             timeOut: 3000,
           });          
-          this.employeeForm.controls["EmployeeCode"].disable();
+          this.employeeForm.controls["employeeCode"].disable();
         },
         error: (err) => {
           //alert(err?.error.message);

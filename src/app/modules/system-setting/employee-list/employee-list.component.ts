@@ -6,23 +6,24 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { faUser, faMessage, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 
 export interface EmployeeModel { 
-  EmployeeID : number;
-  EmployeeCode : string;
-  EmployeeName : string;
-  InstituteID : number;
-  BranchID : number;
-  DepartmrntID : number;
-  DesignationID : number;
-  GradeID : number;
-  EmployeeTypeID : number;
-  Email : string;
-  Address : string;
-  Mobile : string;
-  SupervisorID : number;
-  LeaveApprovalAuthority : number;
+  employeeID : number;
+  employeeCode : string;
+  employeeName : string;
+  instituteID : number;
+  branchID : number;
+  departmrntID : number;
+  designationID : number;
+  gradeID : number;
+  employeeTypeID : number;
+  email : string;
+  address : string;
+  mobile : string;
+  supervisorID : number;
+  leaveApprovalAuthority : number;
 }
 
 @Component({

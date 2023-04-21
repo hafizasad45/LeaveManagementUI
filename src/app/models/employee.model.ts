@@ -4,7 +4,7 @@ export class ModelEmployee {
     employeeName !: string;
     instituteID !: number;
     branchID !: number;
-    departmrntID !: number;
+    departmentID !: number;
     designationID !: number;
     gradeID !: number;
     employeeTypeID !: number;
