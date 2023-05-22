@@ -17,9 +17,13 @@
                     <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
                         {{data.label}}
                     </span>
-                    <i *ngIf="data.items && collapsed" class="menu-collapse-icon"
-                        [ngClass]="!data.expanded ? faAngleRight : faAngleDown"
-                    ></i>
+                    <!-- <i *ngIf="data.items && collapsed" class="menu-collapse-icon"
+                        [ngClass]="!data.expanded ? faAngleRight : faAngleDown"                        
+                    ></i> -->
+                    <i *ngIf="data.items && collapsed" class="menu-collapse-icon">
+                        <fa-icon [icon]="!data.expanded ? faAngleRight : faAngleDown"></fa-icon>
+                    </i>
+                    
                 </a>
     
                 <a class="sidenav-nav-link" 
@@ -32,7 +36,7 @@
                     <i class="sidenav-link-icon" [class]="data.icon"></i>
                     <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
                         {{data.label}}
-                    </span>
+                    </span>                    
                 </a>
                 <div *ngIf="collapsed && data.items && data.items.length > 0">
                     <app-sublevel-menu
