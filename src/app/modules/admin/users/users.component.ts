@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from "ngx-ui-loader"; 
 
 
 export interface UsersModel {
@@ -40,9 +41,10 @@ export class UsersComponent implements OnInit {
 
   selection = new SelectionModel<UsersModel>(true, []);
 
-  constructor(private api: ApiService, private router : Router) {}
+  constructor(private api: ApiService, private router : Router, private ngxService: NgxUiLoaderService) {}
 
   ngOnInit() {
+    this.ngxService.start();
     this.api.getUsers().subscribe((res) => {
       console.log(res)
       this.userModel = res;
@@ -50,6 +52,7 @@ export class UsersComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+    this.ngxService.stop();
   }
 
   FilterChanged(event: Event) {

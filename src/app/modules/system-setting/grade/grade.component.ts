@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { ModelGrade } from 'src/app/models/grade.model';
 import { GradeService } from 'src/app/services/grade.service';
@@ -16,10 +17,13 @@ export class GradeComponent implements OnInit {
   p_gradeID: number | undefined;
   p_Operation : string = "Create";
 
-  constructor(private fb: FormBuilder, private route : ActivatedRoute, private service : GradeService,  private toastr: ToastrService, private router : Router ) {}
+  constructor(private fb: FormBuilder, private route : ActivatedRoute, private service : GradeService,  
+              private toastr: ToastrService, private router : Router, private ngxService: NgxUiLoaderService
+             ) {}
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.resetForm();  
     this.route.queryParams.subscribe((params) => {
       this.p_gradeID = params['data'];
@@ -27,7 +31,8 @@ export class GradeComponent implements OnInit {
         console.log(this.p_gradeID)
         this.getgradeByID(this.p_gradeID);
       }
-    });    
+    });   
+    this.ngxService.stop(); 
   }
 
   getgradeByID(gradeID : number) {
@@ -61,11 +66,13 @@ export class GradeComponent implements OnInit {
   }
 
   onSave()  {
+    this.ngxService.start();
     if (this.gradeForm.value.gradeID == -1) {
       this.addgrade();
     } else {
       this.updategrade();
     }
+    this.ngxService.stop();
   }
 
   addgrade() {

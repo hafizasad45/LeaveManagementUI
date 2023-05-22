@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { DesignationService } from 'src/app/services/designation.service';
 
 
@@ -38,10 +39,14 @@ export class DesignationListComponent implements OnInit  {
 
   selection = new SelectionModel<DesignationModel>(true, []);
 
-  constructor(private service: DesignationService, private router : Router, private toastr: ToastrService) {}
+  constructor(private service: DesignationService, private router : Router, private toastr: ToastrService,
+              private ngxService: NgxUiLoaderService
+             ) {}
 
   ngOnInit() {
+    this.ngxService.start();
     this.getDesignationList();
+    this.ngxService.stop();
   }
 
   getDesignationList() {

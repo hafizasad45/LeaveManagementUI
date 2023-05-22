@@ -10,6 +10,7 @@ import { ToastrService  } from 'ngx-toastr';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
+import { NgxUiLoaderService } from "ngx-ui-loader"; 
 
 @Component({
   selector: 'app-login',
@@ -27,14 +28,17 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private toastr: ToastrService ,
-    private userStore: UserStoreService
+    private userStore: UserStoreService,
+    private ngxService: NgxUiLoaderService
   ) {}
 
   ngOnInit() {
+    this.ngxService.start();
     this.loginForm = this.fb.group({
       loginID: ['', Validators.required],
       passWord: ['', Validators.required],
     });
+    this.ngxService.stop();
   }
 
   goToSignUp() {
@@ -51,11 +55,12 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     if (this.loginForm.valid) {
+      this.ngxService.start();
       this.authService.login(this.loginForm.value).subscribe({
         next: (res) => {
-          this.toastr.success(res.message, 'SUCCESS',{
-            timeOut: 3000,
-          }); 
+          // this.toastr.success(res.message, 'SUCCESS',{
+          //   timeOut: 3000,
+          // }); 
           this.loginForm.reset();
           //console.log(res[0].accessToken);
           this.authService.storeToken(res[0].accessToken);
@@ -64,12 +69,14 @@ export class LoginComponent implements OnInit {
           this.userStore.setFullNameForStore(tokenPayLoad.name);
           this.userStore.setRoleForStore(tokenPayLoad.role);
           this.router.navigate(['LMS']);
+          this.ngxService.stop();
         },
         error: (err) => {
           //alert(err?.error.message);
           this.toastr.error(err?.error.message, 'ERROR', {
             timeOut: 3000,
-          });         
+          });   
+          this.ngxService.stop();      
         },
       });
     } else {

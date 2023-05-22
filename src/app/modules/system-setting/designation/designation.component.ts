@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { ModelDesignation } from 'src/app/models/designation.model';
 import { DesignationService } from 'src/app/services/designation.service';
@@ -18,10 +19,13 @@ export class DesignationComponent implements OnInit {
 
   modelInstitute : any[] = [];
 
-  constructor(private fb: FormBuilder, private route : ActivatedRoute, private service : DesignationService,  private toastr: ToastrService, private router : Router ) {}
+  constructor(private fb: FormBuilder, private route : ActivatedRoute, private service : DesignationService,  
+              private toastr: ToastrService, private router : Router, private ngxService: NgxUiLoaderService
+             ) {}
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.resetForm();  
     this.route.queryParams.subscribe((params) => {
       this.p_DesignationID = params['data'];
@@ -29,7 +33,8 @@ export class DesignationComponent implements OnInit {
         console.log(this.p_DesignationID)
         this.getDesignationByID(this.p_DesignationID);
       }
-    });    
+    }); 
+    this.ngxService.stop();   
   }
 
   getDesignationByID(designationID : number) {
@@ -63,11 +68,13 @@ export class DesignationComponent implements OnInit {
   }
 
   onSave()  {
+    this.ngxService.start();
     if (this.designationForm.value.designationID == -1) {
       this.addDesignation();
     } else {
       this.updateDesignation();
     }
+    this.ngxService.stop();
   }
 
   addDesignation() {

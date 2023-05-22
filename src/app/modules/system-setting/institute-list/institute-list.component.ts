@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiService } from 'src/app/services/api.service';
 import { InstituteService } from 'src/app/services/institute.service';
 
@@ -40,10 +41,14 @@ export class InstituteListComponent implements OnInit  {
 
   selection = new SelectionModel<InstituteModel>(true, []);
 
-  constructor(private service: InstituteService, private router : Router, private toastr: ToastrService) {}
+  constructor(private service: InstituteService, private router : Router, private toastr: ToastrService, 
+              private ngxService: NgxUiLoaderService
+             ) {}
 
   ngOnInit() {
+    this.ngxService.start();
     this.getInstituteList();
+    this.ngxService.stop();
   }
 
   getInstituteList() {

@@ -7,6 +7,7 @@ import { BranchService } from 'src/app/services/branch.service';
 import { InstituteService } from 'src/app/services/institute.service';
 import { ModelInstitute } from 'src/app/models/institute.model';
 import { ModelBranch } from 'src/app/models/branch.model';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-branch',
@@ -20,10 +21,14 @@ export class BranchComponent implements OnInit {
 
   modelInstitute : any[] = [];
 
-  constructor(private fb: FormBuilder, private route : ActivatedRoute, private service : BranchService, private instituteService: InstituteService, private toastr: ToastrService, private router : Router ) {}
+  constructor(private fb: FormBuilder, private route : ActivatedRoute, private service : BranchService, 
+              private instituteService: InstituteService, private toastr: ToastrService, private router : Router,
+              private ngxService: NgxUiLoaderService
+             ) {}
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.resetForm();  
     this.getInstituteList();
     this.route.queryParams.subscribe((params) => {
@@ -33,6 +38,7 @@ export class BranchComponent implements OnInit {
         this.getBranchByID(this.p_BranchID);
       }
     });    
+    this.ngxService.stop();
   }
 
   getBranchByID(branchID : number) {
@@ -74,11 +80,13 @@ export class BranchComponent implements OnInit {
   }
 
   onSave()  {
+    this.ngxService.start();
     if (this.branchForm.value.branchID == -1) {
       this.addBranch();
     } else {
       this.updateBranch();
     }
+    this.ngxService.stop();
   }
 
   addBranch() {

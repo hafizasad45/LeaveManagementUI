@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { GradeService } from 'src/app/services/grade.service';
 
 
@@ -38,10 +39,14 @@ export class GradeListComponent implements OnInit {
 
   selection = new SelectionModel<GradeModel>(true, []);
 
-  constructor(private service: GradeService, private router : Router, private toastr: ToastrService) {}
+  constructor(private service: GradeService, private router : Router, private toastr: ToastrService,
+              private ngxService: NgxUiLoaderService
+             ) {}
 
   ngOnInit() {
+    this.ngxService.start();
     this.getgradeList();
+    this.ngxService.stop();
   }
 
   getgradeList() {
@@ -66,6 +71,7 @@ export class GradeListComponent implements OnInit {
     });
   }
   FunctionDelete(gradeID: any) {  
+    this.ngxService.start();
     this.service.deleteGrade(gradeID).subscribe({
       next: (res) => {
         this.toastr.success(res[0].message, 'SUCCESS',{
@@ -80,7 +86,7 @@ export class GradeListComponent implements OnInit {
         }); 
       },
     });
-
+    this.ngxService.stop();
    
   }
 

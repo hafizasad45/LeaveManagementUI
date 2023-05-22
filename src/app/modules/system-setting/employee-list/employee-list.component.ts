@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { faUser, faMessage, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 export interface EmployeeModel { 
@@ -49,10 +50,14 @@ export class EmployeeListComponent {
 
   selection = new SelectionModel<EmployeeModel>(true, []);
 
-  constructor(private service: EmployeeService, private router : Router, private toastr: ToastrService) {}
+  constructor(private service: EmployeeService, private router : Router, private toastr: ToastrService,
+              private ngxService: NgxUiLoaderService
+             ) {}
 
   ngOnInit() {
+    this.ngxService.start();
     this.getEmployeeList();
+    this.ngxService.stop();
   }
 
   getEmployeeList() {
@@ -77,6 +82,7 @@ export class EmployeeListComponent {
     });
   }
   FunctionDelete(EmployeeID: any) {  
+    this.ngxService.start();
     this.service.deleteEmployee(EmployeeID).subscribe({
       next: (res) => {
         this.toastr.success(res[0].message, 'SUCCESS',{
@@ -91,7 +97,7 @@ export class EmployeeListComponent {
         }); 
       },
     });
-
+    this.ngxService.stop();
    
   }
 

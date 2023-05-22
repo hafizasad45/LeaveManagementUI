@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService  } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import ValidateForm from 'src/app/helpers/validateForm';
 
 @Component({
@@ -21,15 +22,17 @@ export class UserComponent implements OnInit {
   isText: boolean = false;
   eyeIcon: string = 'fa-eye-slash';
 
-  constructor(private fb: FormBuilder ) {}
+  constructor(private fb: FormBuilder, private ngxService: NgxUiLoaderService ) {}
 
   ngOnInit() {
+    this.ngxService.start();
     this.userForm = this.fb.group({
       loginID: ['', Validators.required],
       password: ['', Validators.required],
       effectDate: ['', Validators.required],
       role: ['', Validators.required],
     });
+    this.ngxService.stop();
   }
 
   hideShowPass() {

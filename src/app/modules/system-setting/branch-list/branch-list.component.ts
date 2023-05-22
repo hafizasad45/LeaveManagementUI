@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BranchService } from 'src/app/services/branch.service';
 
 
@@ -41,10 +42,14 @@ export class BranchListComponent implements OnInit {
 
   selection = new SelectionModel<BranchModel>(true, []);
 
-  constructor(private service: BranchService, private router : Router, private toastr: ToastrService) {}
+  constructor(private service: BranchService, private router : Router, private toastr: ToastrService,
+              private ngxService: NgxUiLoaderService
+             ) {}
 
   ngOnInit() {
+    this.ngxService.start();
     this.getBranchList();
+    this.ngxService.stop();
   }
 
   getBranchList() {

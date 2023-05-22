@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { ModelBranch } from 'src/app/models/branch.model';
 import { ModelDepartment } from 'src/app/models/department.model';
@@ -39,11 +40,13 @@ export class EmployeeComponent implements OnInit {
                 private toastr: ToastrService, private router : Router, private insService : InstituteService,
                 private brService : BranchService, private depService : DepartmentService,
                 private desService : DesignationService, private grdService : GradeService,
-                private empTypeService : EmployeeTypeService
+                private empTypeService : EmployeeTypeService,
+                private ngxService: NgxUiLoaderService
              ) {}
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.resetForm();  
     this.loadDropDown();
     this.route.queryParams.subscribe((params) => {
@@ -51,7 +54,8 @@ export class EmployeeComponent implements OnInit {
       if (this.p_EmployeeID != null) {
         this.getEmployeeByID(this.p_EmployeeID);
       }
-    });    
+    });  
+    this.ngxService.stop();  
   }
 
   getEmployeeByID(employeeID : number) {
@@ -129,11 +133,13 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSave()  {
+    this.ngxService.start();
     if (this.employeeForm.value.employeeID == -1) {
       this.addEmployee();
     } else {
       this.updateEmployee();
     }
+    this.ngxService.stop();
   }
 
   addEmployee() {

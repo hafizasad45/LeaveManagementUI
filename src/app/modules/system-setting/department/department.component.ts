@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { ModelDepartment } from 'src/app/models/department.model';
 import { DepartmentService } from 'src/app/services/department.service';
@@ -18,10 +19,13 @@ export class DepartmentComponent implements OnInit {
 
   modelInstitute : any[] = [];
 
-  constructor(private fb: FormBuilder, private route : ActivatedRoute, private service : DepartmentService,  private toastr: ToastrService, private router : Router ) {}
+  constructor(private fb: FormBuilder, private route : ActivatedRoute, private service : DepartmentService,  
+              private toastr: ToastrService, private router : Router, private ngxService: NgxUiLoaderService 
+             ) {}
 
 
   ngOnInit(): void {
+    this.ngxService.start();
     this.resetForm();  
     this.route.queryParams.subscribe((params) => {
       this.p_DepartmentID = params['data'];
@@ -29,7 +33,8 @@ export class DepartmentComponent implements OnInit {
         console.log(this.p_DepartmentID)
         this.getDepartmentByID(this.p_DepartmentID);
       }
-    });    
+    }); 
+    this.ngxService.stop();   
   }
 
   getDepartmentByID(departmentID : number) {
@@ -63,11 +68,13 @@ export class DepartmentComponent implements OnInit {
   }
 
   onSave()  {
+    this.ngxService.start();
     if (this.departmentForm.value.departmentID == -1) {
       this.addDepartment();
     } else {
       this.updateDepartment();
     }
+    this.ngxService.stop();
   }
 
   addDepartment() {

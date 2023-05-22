@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { EmployeeTypeService } from 'src/app/services/employee-type.service';
 
 export interface EmployeeTypeModel {  
@@ -36,10 +37,14 @@ export class EmployeeTypeListComponent implements OnInit {
 
   selection = new SelectionModel<EmployeeTypeModel>(true, []);
 
-  constructor(private service: EmployeeTypeService, private router : Router, private toastr: ToastrService) {}
+  constructor(private service: EmployeeTypeService, private router : Router, private toastr: ToastrService,
+              private ngxService: NgxUiLoaderService
+             ) {}
 
   ngOnInit() {
+    this.ngxService.start();
     this.getemployeeTypeList();
+    this.ngxService.stop();
   }
 
   getemployeeTypeList() {
@@ -64,6 +69,7 @@ export class EmployeeTypeListComponent implements OnInit {
     });
   }
   FunctionDelete(employeeTypeID: any) {  
+    this.ngxService.start();
     this.service.deleteEmployeeType(employeeTypeID).subscribe({
       next: (res) => {
         this.toastr.success(res[0].message, 'SUCCESS',{
@@ -78,7 +84,7 @@ export class EmployeeTypeListComponent implements OnInit {
         }); 
       },
     });
-
+    this.ngxService.stop();
    
   }
 
