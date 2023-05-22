@@ -55,5 +55,16 @@ export const navbarData: INavbarData[] = [
                 label: 'Employee',
             }
         ]
+    },
+    {
+        routeLink: 'products',
+        icon: 'fa fa-coffee',
+        label: 'Leave',
+        items: [
+            {
+                routeLink: 'lms_ActivityList',
+                label: 'Activity List'                
+            }
+        ]
     }
 ];
