@@ -50,7 +50,6 @@ export class EmployeeTypeListComponent implements OnInit {
   getemployeeTypeList() {
     this.dataSource = [];
     this.service.getEmployeeTypeList().subscribe((res) => {
-      console.log(res)
       this.employeeTypeModel = res;
       this.dataSource = new MatTableDataSource(this.employeeTypeModel);
       this.dataSource.paginator = this.paginator;

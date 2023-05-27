@@ -28,7 +28,6 @@ export class GradeComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.p_gradeID = params['data'];
       if (this.p_gradeID != null) {
-        console.log(this.p_gradeID)
         this.getgradeByID(this.p_gradeID);
       }
     });   

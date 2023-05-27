@@ -46,7 +46,6 @@ export class LmsActivityListComponent {
   getLMS_ActivityList() {
     this.dataSource = [];
     this.service.getLMS_ActivityList().subscribe((res) => {
-      console.log(res)
       this.LMS_ActivityModel = res;
       this.dataSource = new MatTableDataSource(this.LMS_ActivityModel);
       this.dataSource.paginator = this.paginator;
@@ -59,13 +58,13 @@ export class LmsActivityListComponent {
     this.dataSource.filter = filterValue;
   }
 
-  FunctionEdit(LMS_ActivityID: any) {
+  FunctionEdit(lmS_ActivityID: any) {
     this.router.navigate(["LMS/lms_Activity"], {
-      queryParams: { data: LMS_ActivityID },
+      queryParams: { data: lmS_ActivityID },
     });
   }
-  FunctionDelete(LMS_ActivityID: any) {  
-    this.service.deleteLMS_Activity(LMS_ActivityID).subscribe({
+  FunctionDelete(lmS_ActivityID: any) {  
+    this.service.deleteLMS_Activity(lmS_ActivityID).subscribe({
       next: (res) => {
         this.toastr.success(res[0].message, 'SUCCESS',{
           timeOut: 3000,

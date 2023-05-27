@@ -52,7 +52,6 @@ export class DesignationListComponent implements OnInit  {
   getDesignationList() {
     this.dataSource = [];
     this.service.getDesignationList().subscribe((res) => {
-      console.log(res)
       this.designationModel = res;
       this.dataSource = new MatTableDataSource(this.designationModel);
       this.dataSource.paginator = this.paginator;

@@ -54,7 +54,6 @@ export class InstituteListComponent implements OnInit  {
   getInstituteList() {
     this.dataSource = [];
     this.service.getInstituteList().subscribe((res) => {
-      console.log(res)
       this.instituteModel = res;
       this.dataSource = new MatTableDataSource(this.instituteModel);
       this.dataSource.paginator = this.paginator;
@@ -68,14 +67,11 @@ export class InstituteListComponent implements OnInit  {
   }
 
   FunctionEdit(instituteID: any) {
-    //console.log(instituteID);
-   // this.router.navigate(['LMS/institute']);
     this.router.navigate(["LMS/institute"], {
       queryParams: { data: instituteID },
     });
   }
   FunctionDelete(instituteID: any) {
-    console.log(instituteID);    
     this.service.deleteInstitute(instituteID).subscribe({
       next: (res) => {
         this.toastr.success(res[0].message, 'SUCCESS',{

@@ -28,7 +28,6 @@ export class InstituteComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.p_InstituteID = params['data'];
       if (this.p_InstituteID != null) {
-        console.log(this.p_InstituteID)
         this.getInstituteByID(this.p_InstituteID);
       }
     });
@@ -76,7 +75,6 @@ export class InstituteComponent implements OnInit {
 
   addInstitute() {
     if (this.instituteForm.valid) {
-      console.log(this.instituteForm.value)
       this.service.createInstitute(this.instituteForm.value).subscribe({
         next: (res) => {
           this.toastr.success(res[0].message, 'SUCCESS',{

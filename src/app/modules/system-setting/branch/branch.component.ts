@@ -34,7 +34,6 @@ export class BranchComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.p_BranchID = params['data'];
       if (this.p_BranchID != null) {
-        console.log(this.p_BranchID)
         this.getBranchByID(this.p_BranchID);
       }
     });    

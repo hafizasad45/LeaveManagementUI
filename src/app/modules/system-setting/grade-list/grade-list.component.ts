@@ -52,7 +52,6 @@ export class GradeListComponent implements OnInit {
   getgradeList() {
     this.dataSource = [];
     this.service.getGradeList().subscribe((res) => {
-      console.log(res)
       this.gradeModel = res;
       this.dataSource = new MatTableDataSource(this.gradeModel);
       this.dataSource.paginator = this.paginator;

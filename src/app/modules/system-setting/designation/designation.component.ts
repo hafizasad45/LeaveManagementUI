@@ -30,7 +30,6 @@ export class DesignationComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.p_DesignationID = params['data'];
       if (this.p_DesignationID != null) {
-        console.log(this.p_DesignationID)
         this.getDesignationByID(this.p_DesignationID);
       }
     }); 

@@ -30,7 +30,6 @@ export class DepartmentComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.p_DepartmentID = params['data'];
       if (this.p_DepartmentID != null) {
-        console.log(this.p_DepartmentID)
         this.getDepartmentByID(this.p_DepartmentID);
       }
     }); 

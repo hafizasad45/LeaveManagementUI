@@ -63,7 +63,6 @@ export class EmployeeListComponent {
   getEmployeeList() {
     this.dataSource = [];
     this.service.getEmployeeList().subscribe((res) => {
-      console.log(res)
       this.employeeModel = res;
       this.dataSource = new MatTableDataSource(this.employeeModel);
       this.dataSource.paginator = this.paginator;

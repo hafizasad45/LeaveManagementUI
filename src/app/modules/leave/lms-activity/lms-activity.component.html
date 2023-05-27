@@ -1,1 +1,64 @@
-<p>lms-activity works!</p>
+
+<form [formGroup]="LmsActivityForm">
+    <h3 class="page-title">{{p_Operation}} LmsActivity</h3>
+    <div class="card">
+        <div class="card-head mh-100">
+            <div class="position-absolute top-0 end-0 p-2 me-4">
+                <div class="row">         
+                  <button mat-mini-fab color="accent" class="ms-2" (click)="goBack()" type="submit" matTooltip="Back">
+                    <mat-icon>arrow_back</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="primary" class="ms-2" (click)="onSave()" type="submit" matTooltip="Save">
+                    <mat-icon>save</mat-icon>
+                  </button>
+                </div>
+              </div>
+        </div>
+        <div class="card-body"> 
+          <input hidden="true" formControlName="lms_ActivityID" />   
+            <div class="row g-3">
+                <div class="input-group-sm col-md-4">
+                  <label for="lms_ActivityName" class="form-label required">Activity Name</label>
+                  <input 
+                  [class.is-invalid]="LmsActivityForm.controls['lms_ActivityName'].dirty && LmsActivityForm.hasError('required', 'lms_ActivityName')"
+                  [class.is-valid]="LmsActivityForm.controls['lms_ActivityName'].dirty"
+                  formControlName="lms_ActivityName" type="text" class="form-control" id="lms_ActivityName" required placeholder="Name">
+                  <small
+                    *ngIf="LmsActivityForm.controls['lms_ActivityName'].dirty && LmsActivityForm.hasError('required', 'lms_ActivityName')"
+                    class="text-danger">*Name is required
+                  </small>
+                </div>
+                <div class="input-group-sm col-md-4">
+                    <label for="lms_ActivityFriendlyName" class="form-label required">Activity Frienly Name</label>
+                    <input 
+                    [class.is-invalid]="LmsActivityForm.controls['lms_ActivityFriendlyName'].dirty && LmsActivityForm.hasError('required', 'lms_ActivityFriendlyName')"
+                    [class.is-valid]="LmsActivityForm.controls['lms_ActivityFriendlyName'].dirty"
+                    formControlName="lms_ActivityFriendlyName" type="text" class="form-control" id="lms_ActivityFriendlyName" required placeholder="Friendly Name">
+                    <small
+                      *ngIf="LmsActivityForm.controls['lms_ActivityFriendlyName'].dirty && LmsActivityForm.hasError('required', 'lms_ActivityFriendlyName')"
+                      class="text-danger">*Friend Name is required
+                    </small>
+                  </div>
+                  <div class="input-group-sm col-md-4">
+                    <label for="subjectForEmail" class="form-label">Subject For Mail</label>
+                    <input 
+                    [class.is-invalid]="LmsActivityForm.controls['subjectForEmail'].dirty && LmsActivityForm.hasError('required', 'subjectForEmail')"
+                    [class.is-valid]="LmsActivityForm.controls['subjectForEmail'].dirty"
+                    formControlName="subjectForEmail" type="text" class="form-control" id="subjectForEmail" required placeholder="Mail Subject">
+                    <small
+                      *ngIf="LmsActivityForm.controls['subjectForEmail'].dirty && LmsActivityForm.hasError('required', 'subjectForEmail')"
+                      class="text-danger">*Mail Subject is required
+                    </small>                 
+                  </div>
+               
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="IsActive" formControlName="IsActive">
+                <label class="form-check-label" for="IsActive">Active</label>
+              </div>
+        </div>
+    </div>
+</form>
+

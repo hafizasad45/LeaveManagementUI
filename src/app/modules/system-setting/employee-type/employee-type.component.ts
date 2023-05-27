@@ -28,7 +28,6 @@ export class EmployeeTypeComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.p_employeeTypeID = params['data'];
       if (this.p_employeeTypeID != null) {
-        console.log(this.p_employeeTypeID)
         this.getemployeeTypeByID(this.p_employeeTypeID);
       }
     }); 

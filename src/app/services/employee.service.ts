@@ -16,7 +16,6 @@ export class EmployeeService {
   }
 
   createEmployee(employeeObj: ModelEmployee) {
-    console.log(employeeObj)
     return this.http.post<any>(`${this.baseUrl}CreateEmployee`, employeeObj);
   }
 

@@ -51,7 +51,6 @@ export class DepartmentListComponent implements OnInit  {
   getdepartmentList() {
     this.dataSource = [];
     this.service.getDepartmentList().subscribe((res) => {
-      console.log(res)
       this.departmentModel = res;
       this.dataSource = new MatTableDataSource(this.departmentModel);
       this.dataSource.paginator = this.paginator;
