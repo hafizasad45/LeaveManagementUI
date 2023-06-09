@@ -15,22 +15,22 @@ export class GradeService {
   }
 
   createGrade(gradeObj: any) {
-    return this.http.post<any>(`${this.baseUrl}CreateGrade`, gradeObj);
+    return this.http.post<any>(`${this.baseUrl}Grade`, gradeObj);
   }
 
   updateGrade(gradeObj: any) {
-    return this.http.post<any>(`${this.baseUrl}UpdateGrade`, gradeObj);
+    return this.http.put<any>(`${this.baseUrl}Grade`, gradeObj);
   }
 
   getGradeList() {
-    return this.http.get<any>(`${this.baseUrl}GetGradetList`);
+    return this.http.get<any>(`${this.baseUrl}Grade`);
   }
 
   getGradeByID(gradeID : number) {
-    return this.http.get<any>(`${this.baseUrl}GetGradeByID/${gradeID}`);
+    return this.http.get<any>(`${this.baseUrl}Grade/${gradeID}`);
   }
 
   deleteGrade(gradeID : any) {
-    return this.http.delete<any>(`${this.baseUrl}DeleteGrade/${gradeID}`);
+    return this.http.delete<any>(`${this.baseUrl}Grade/${gradeID}`);
   }
 }

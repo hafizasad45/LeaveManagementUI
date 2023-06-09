@@ -16,22 +16,22 @@ export class EmployeeService {
   }
 
   createEmployee(employeeObj: ModelEmployee) {
-    return this.http.post<any>(`${this.baseUrl}CreateEmployee`, employeeObj);
+    return this.http.post<any>(`${this.baseUrl}Employee`, employeeObj);
   }
 
   updateEmployee(employeeObj: any) {
-    return this.http.post<any>(`${this.baseUrl}UpdateEmployee`, employeeObj);
+    return this.http.put<any>(`${this.baseUrl}Employee`, employeeObj);
   }
 
   getEmployeeList() {
-    return this.http.get<any>(`${this.baseUrl}GetEmployeeList`);
+    return this.http.get<any>(`${this.baseUrl}Employee`);
   }
 
   getEmployeeByID(employeeID : number) {
-    return this.http.get<any>(`${this.baseUrl}GetEmployeeByID/${employeeID}`);
+    return this.http.get<any>(`${this.baseUrl}Employee/${employeeID}`);
   }
 
   deleteEmployee(employeeID : any) {
-    return this.http.delete<any>(`${this.baseUrl}DeleteEmployee/${employeeID}`);
+    return this.http.delete<any>(`${this.baseUrl}Employee/${employeeID}`);
   }
 }

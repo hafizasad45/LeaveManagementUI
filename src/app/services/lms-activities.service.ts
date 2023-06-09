@@ -15,22 +15,22 @@ export class LMSActivitiesService {
   }
 
   createLMS_Activity(lms_ActivityObj: any) {
-    return this.http.post<any>(`${this.baseUrl}CreateLMS_Activitiy`, lms_ActivityObj);
+    return this.http.post<any>(`${this.baseUrl}LMS_Activitiy`, lms_ActivityObj);
   }
 
   updateLMS_Activity(lms_ActivityObj: any) {
-    return this.http.post<any>(`${this.baseUrl}UpdateLMS_Activity`, lms_ActivityObj);
+    return this.http.put<any>(`${this.baseUrl}LMS_Activitiy`, lms_ActivityObj);
   }
 
   getLMS_ActivityList() {
-    return this.http.get<any>(`${this.baseUrl}GetLMS_ActivityList`);
+    return this.http.get<any>(`${this.baseUrl}LMS_Activitiy`);
   }
 
   getLMS_ActivityByID(lms_ActivityID : number) {
-    return this.http.get<any>(`${this.baseUrl}GetLMS_ActivityByID/${lms_ActivityID}`);
+    return this.http.get<any>(`${this.baseUrl}LMS_Activitiy/${lms_ActivityID}`);
   }
 
   deleteLMS_Activity(lms_ActivityID : any) {
-    return this.http.delete<any>(`${this.baseUrl}DeleteLMS_Activity/${lms_ActivityID}`);
+    return this.http.delete<any>(`${this.baseUrl}LMS_Activitiy/${lms_ActivityID}`);
   }
 }

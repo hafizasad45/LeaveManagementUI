@@ -15,22 +15,22 @@ export class DesignationService {
   }
 
   createDesignation(designationObj: any) {
-    return this.http.post<any>(`${this.baseUrl}CreateDesignation`, designationObj);
+    return this.http.post<any>(`${this.baseUrl}Designation`, designationObj);
   }
 
   updateDesignation(designationObj: any) {
-    return this.http.post<any>(`${this.baseUrl}UpdateDesignation`, designationObj);
+    return this.http.put<any>(`${this.baseUrl}Designation`, designationObj);
   }
 
   getDesignationList() {
-    return this.http.get<any>(`${this.baseUrl}GetDesignationList`);
+    return this.http.get<any>(`${this.baseUrl}Designation`);
   }
 
   getDesignationByID(designationID : number) {
-    return this.http.get<any>(`${this.baseUrl}GetDesignationByID/${designationID}`);
+    return this.http.get<any>(`${this.baseUrl}Designation/${designationID}`);
   }
 
   deleteDesignation(designationID : any) {
-    return this.http.delete<any>(`${this.baseUrl}DeleteDesignation/${designationID}`);
+    return this.http.delete<any>(`${this.baseUrl}Designation/${designationID}`);
   }
 }

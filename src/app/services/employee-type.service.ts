@@ -15,22 +15,22 @@ export class EmployeeTypeService {
   }
 
   createEmployeeType(employeeTypeObj: any) {
-    return this.http.post<any>(`${this.baseUrl}CreateEmployeeType`, employeeTypeObj);
+    return this.http.post<any>(`${this.baseUrl}EmployeeType`, employeeTypeObj);
   }
 
   updateEmployeeType(employeeTypeObj: any) {
-    return this.http.post<any>(`${this.baseUrl}UpdateEmployeeType`, employeeTypeObj);
+    return this.http.put<any>(`${this.baseUrl}EmployeeType`, employeeTypeObj);
   }
 
   getEmployeeTypeList() {
-    return this.http.get<any>(`${this.baseUrl}GetEmployeeTypeList`);
+    return this.http.get<any>(`${this.baseUrl}EmployeeType`);
   }
 
   getEmployeeTypeByID(employeeTypeID : number) {
-    return this.http.get<any>(`${this.baseUrl}GetEmployeeTypeByID/${employeeTypeID}`);
+    return this.http.get<any>(`${this.baseUrl}EmployeeType/${employeeTypeID}`);
   }
 
   deleteEmployeeType(employeeTypeID : any) {
-    return this.http.delete<any>(`${this.baseUrl}DeleteEmployeeType/${employeeTypeID}`);
+    return this.http.delete<any>(`${this.baseUrl}EmployeeType/${employeeTypeID}`);
   }
 }
