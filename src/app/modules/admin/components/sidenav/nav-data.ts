@@ -64,6 +64,10 @@ export const navbarData: INavbarData[] = [
             {
                 routeLink: 'lms_ActivityList',
                 label: 'Activity List'                
+            },
+            {
+                routeLink: 'lms_Weekend',
+                label: 'Weekends'                
             }
         ]
     }

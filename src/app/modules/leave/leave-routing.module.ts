@@ -4,6 +4,7 @@ import { MasterpageComponent } from '../admin/components/masterpage/masterpage.c
 import { HomeComponent } from '../admin/components/home/home.component';
 import { LmsActivityListComponent } from './lms-activity-list/lms-activity-list.component';
 import { LmsActivityComponent } from './lms-activity/lms-activity.component';
+import { WeekendComponent } from './weekend/weekend.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'lms_ActivityList', component: LmsActivityListComponent},
       { path: 'lms_Activity', component: LmsActivityComponent},
+      { path: 'lms_Weekend', component: WeekendComponent},
     ],
   },
 ];

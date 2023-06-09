@@ -1,0 +1,56 @@
+
+<form [formGroup]="LmsWeekendForm">
+    <h3 class="page-title">Define Weekend</h3>
+    <div class="card">
+        <div class="card-head mh-100">
+            <div class="position-absolute top-0 end-0 p-2 me-4">
+                <div class="row">
+                  <button mat-mini-fab color="primary" class="ms-2" (click)="onSave()" type="submit" matTooltip="Save">
+                    <mat-icon>save</mat-icon>
+                  </button>
+                </div>
+              </div>
+        </div>
+        <div class="card-body">   
+            <div class="row g-3">
+                <div class="input-group-sm col-md-4">
+                    <label for="branchID" class="form-label">Branch</label>
+                    <select 
+                    [class.is-invalid]="LmsWeekendForm.controls['branchID'].dirty && LmsWeekendForm.hasError('required', 'branchID')"
+                    [class.is-valid]="LmsWeekendForm.controls['branchID'].dirty"
+                    formControlName="branchID" class="form-select" id="branchID" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let br of modelBranch" [value]="[br.branchID]">
+                        {{br.branchName}}
+                    </option>
+                  </select>
+                    <small
+                      *ngIf="LmsWeekendForm.controls['branchID'].dirty && LmsWeekendForm.hasError('required', 'branchID')"
+                      class="text-danger">*Branch is required
+                    </small>
+                  </div>
+               
+            </div>
+        </div>
+
+
+        <div class="card-body">
+            <ul class="list-group list-group-horizontal" *ngFor="let br of modelBranch">
+                <li class="list-group-item">{{br.branchName}}</li>
+                <li class="list-group-item">
+                    <select 
+                    [class.is-invalid]="LmsWeekendForm.controls['branchID'].dirty && LmsWeekendForm.hasError('required', 'branchID')"
+                    [class.is-valid]="LmsWeekendForm.controls['branchID'].dirty"
+                    formControlName="branchID" class="form-select" id="branchID" required>
+                    <option value="">Choose...</option>
+                    <option *ngFor="let br of modelBranch" [value]="[br.branchID]">
+                        {{br.branchName}}
+                    </option>
+                  </select>
+                </li>
+              </ul>
+          </div>
+
+    </div>
+</form>
+
