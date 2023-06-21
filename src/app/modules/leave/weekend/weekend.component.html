@@ -14,7 +14,7 @@
       <div class="row g-3">
         <div class="input-group-sm col-md-4">
           <label for="branchID" class="form-label">Branch</label>
-          <select
+          <select (change)="onBranchChange($event)"
             [class.is-invalid]="LmsWeekendForm.controls['branchID'].dirty && LmsWeekendForm.hasError('required', 'branchID')"
             [class.is-valid]="LmsWeekendForm.controls['branchID'].dirty" formControlName="branchID" class="form-select"
             id="branchID" required>

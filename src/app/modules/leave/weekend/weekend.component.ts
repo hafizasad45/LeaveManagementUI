@@ -24,8 +24,10 @@ export interface LMS_WeekendItemModel {
 export class WeekendComponent implements OnInit {
   LmsWeekendForm!: FormGroup;
   modelBranch: any[] = [];
-  modelLmsWeekend: any[] = [];
+  modelLmsWeekend: ModelLmsWeekend[] = [];
   modelLmsWeekendAdd : ModelLmsWeekend[] = [];
+
+  dataUpdate: boolean = false;
 
   dataSource: any;
   displayedColumns: string[] = [
@@ -60,42 +62,41 @@ export class WeekendComponent implements OnInit {
   onSave() {
     try {
       if (this.LmsWeekendForm.valid) {
-        const dataUpdate = false;
         for (let i = 0; i < 7; i++) {
           if (i === 0) {
             this.modelLmsWeekendAdd.push({branchID: this.LmsWeekendForm.value.branchID, branchCode: '', 
                                           branchWeekendID : 0, dayLengthID:this.LmsWeekendForm.value.cboSaturday,
-                                          nameOfDay: '', weekendID: 101, isUpdate: dataUpdate})
+                                          nameOfDay: '', weekendID: 101, isUpdate: this.dataUpdate})
           }
           else if (i === 1) {
             this.modelLmsWeekendAdd.push({branchID: this.LmsWeekendForm.value.branchID, branchCode: '', 
                                           branchWeekendID : 0, dayLengthID:this.LmsWeekendForm.value.cboSunday,
-                                          nameOfDay: '', weekendID: 102, isUpdate: dataUpdate})
+                                          nameOfDay: '', weekendID: 102, isUpdate: this.dataUpdate})
           }
           else if (i === 2) {
             this.modelLmsWeekendAdd.push({branchID: this.LmsWeekendForm.value.branchID, branchCode: '', 
                                           branchWeekendID : 0, dayLengthID:this.LmsWeekendForm.value.cboMonday,
-                                          nameOfDay: '', weekendID: 103, isUpdate: dataUpdate})
+                                          nameOfDay: '', weekendID: 103, isUpdate: this.dataUpdate})
           }
           else if (i === 3) {
             this.modelLmsWeekendAdd.push({branchID: this.LmsWeekendForm.value.branchID, branchCode: '', 
                                           branchWeekendID : 0, dayLengthID:this.LmsWeekendForm.value.cboTuesday,
-                                          nameOfDay: '', weekendID: 104, isUpdate: dataUpdate})
+                                          nameOfDay: '', weekendID: 104, isUpdate: this.dataUpdate})
           }
           else if (i === 4) {
             this.modelLmsWeekendAdd.push({branchID: this.LmsWeekendForm.value.branchID, branchCode: '', 
                                           branchWeekendID : 0, dayLengthID:this.LmsWeekendForm.value.cboWednesday,
-                                          nameOfDay: '', weekendID: 105, isUpdate: dataUpdate})
+                                          nameOfDay: '', weekendID: 105, isUpdate: this.dataUpdate})
           }
           else if (i === 5) {
             this.modelLmsWeekendAdd.push({branchID: this.LmsWeekendForm.value.branchID, branchCode: '', 
                                           branchWeekendID : 0, dayLengthID:this.LmsWeekendForm.value.cboThursday,
-                                          nameOfDay: '', weekendID: 106, isUpdate: dataUpdate})
+                                          nameOfDay: '', weekendID: 106, isUpdate: this.dataUpdate})
           }
           else if (i === 6) {
             this.modelLmsWeekendAdd.push({branchID: this.LmsWeekendForm.value.branchID, branchCode: '', 
                                           branchWeekendID : 0, dayLengthID:this.LmsWeekendForm.value.cboFriday,
-                                          nameOfDay: '', weekendID: 107, isUpdate: dataUpdate})
+                                          nameOfDay: '', weekendID: 107, isUpdate: this.dataUpdate})
           }
           
         }
@@ -134,7 +135,24 @@ export class WeekendComponent implements OnInit {
   getWeekendList() {
     this.lmsWeekendService.getLMS_WeekendList().subscribe((data: ModelLmsWeekend[]) => {
       this.modelLmsWeekend = data;
+      console.log(this.modelLmsWeekend)
     })
+  }
+
+  onBranchChange(branchID : any) {
+    const filteredData : ModelLmsWeekend[] = this.modelLmsWeekend.filter((value) => value.branchID == branchID.target.value);
+
+    if (filteredData.length > 0) {
+      this.dataUpdate = true;
+      this.LmsWeekendForm.get("cboSaturday")!.patchValue(filteredData[0].dayLengthID);
+      this.LmsWeekendForm.get("cboSunday")!.patchValue(filteredData[1].dayLengthID);
+      this.LmsWeekendForm.get("cboMonday")!.patchValue(filteredData[2].dayLengthID);
+      this.LmsWeekendForm.get("cboTuesday")!.patchValue(filteredData[3].dayLengthID);
+      this.LmsWeekendForm.get("cboWednesday")!.patchValue(filteredData[4].dayLengthID);
+      this.LmsWeekendForm.get("cboThursday")!.patchValue(filteredData[5].dayLengthID);
+      this.LmsWeekendForm.get("cboFriday")!.patchValue(filteredData[6].dayLengthID);
+    }
+    
   }
 
 
